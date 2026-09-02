@@ -1,0 +1,40 @@
+.contact :global(.wrap) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.lede {
+  margin-top: 1rem;
+  color: var(--ink-2);
+  max-width: 40ch;
+}
+
+.details {
+  margin: 2rem 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.6rem 1.5rem;
+}
+
+.details dt {
+  color: var(--ink-2);
+}
+
+.details dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.details dd a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--pine);
+}
+
+@media (max-width: 760px) {
+  .contact :global(.wrap) {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
