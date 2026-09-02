@@ -1,0 +1,55 @@
+.areas {
+  background: var(--birch);
+}
+
+.areas :global(.wrap) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  list-style: none;
+  margin-block-end: 0;
+  padding: 0;
+}
+
+.chips li {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.95rem;
+  background: var(--paper);
+}
+
+.chips li.home {
+  background: var(--spruce);
+  color: #f3f1ea;
+  border-color: var(--spruce);
+}
+
+.note {
+  color: var(--ink-2);
+  margin-top: 1.5rem;
+  max-width: 44ch;
+}
+
+.asideNote {
+  composes: note;
+  margin-top: 0.75rem;
+}
+
+.asideCta {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .areas :global(.wrap) {
+    grid-template-columns: 1fr;
+  }
+}
