@@ -1,0 +1,159 @@
+/**
+ * Single source of truth for every string and every piece of business data on
+ * the site. Fields typed `Todo` are placeholders that still need the real
+ * value from the client; they render as a highlighted [chip] via <Todo>, so an
+ * unfilled field is impossible to miss instead of silently shipping a dead
+ * tel: link.
+ */
+export type Todo = null;
+
+export const site = {
+  company: "Liukko Kodit Oy",
+  brand: "Liukko Kodit",
+  city: "Tuusula",
+
+  /** TODO: yrittäjän koko nimi */
+  owner: null as string | Todo,
+  /** TODO: oikea puhelinnumero, kansainvälisessä muodossa esim. +358401234567 */
+  phone: null as string | Todo,
+  /** TODO: vahvista oikea osoite */
+  email: null as string | Todo,
+  /** TODO: Y-tunnus muodossa 0000000-0 */
+  businessId: null as string | Todo,
+
+  nav: [
+    { href: "#palvelut", label: "Palvelut" },
+    { href: "#prosessi", label: "Näin työ etenee" },
+    { href: "#tyot", label: "Työnäytteet" },
+    { href: "#alue", label: "Toiminta-alue" },
+  ],
+
+  hero: {
+    title: "Talosi rakentaa sama mies alusta loppuun.",
+    lede: "Liukko Kodit on yhden rakentajan rakennusliike Tuusulassa. Sovit työstä suoraan tekijän kanssa – ja hän on se, joka seisoo tontillasi joka aamu.",
+    area: "Omakotitalot, laajennukset ja piharakennukset",
+    areaStrong: "Tuusula ja Keski-Uusimaa",
+  },
+
+  why: {
+    title: "Miksi yhden miehen rakennusliike?",
+    lede: "Suuressa firmassa myyjä myy, työnjohtaja johtaa ja kirvesmies rakentaa. Täällä kaikki kolme ovat sama henkilö.",
+    items: [
+      {
+        title: "Sama tekijä joka päivä",
+        body: "Tontilla ei vaihdu porukka viikoittain. Rakentaja tuntee talosi jokaisen liitoksen, koska hän on tehnyt ne itse.",
+      },
+      {
+        title: "Suora keskustelu",
+        body: 'Kysymys tai muutostoive hoituu yhdellä puhelulla. Ei välikäsiä, ei vastausta "kysyn työmaalta".',
+      },
+      {
+        title: "Vastuu yhdessä nimessä",
+        body: "Tarjous, aikataulu ja laatu ovat yhden ihmisen lupauksia. Se näkyy siinä, miten työ tehdään.",
+      },
+    ],
+  },
+
+  services: {
+    title: "Palvelut",
+    lede: "Pientalorakentamista suunnittelusta luovutukseen. Tarvittaessa luotettavat aliurakoitsijat LVI- ja sähkötöihin.",
+    items: [
+      {
+        title: "Omakotitalot",
+        body: "Puurunkoiset omakotitalot omalle tontille valmiiden tai räätälöityjen suunnitelmien pohjalta. Perustuksista vesikattoon ja sisävalmiiksi tai sovittuun valmiusasteeseen.",
+      },
+      {
+        title: "Laajennukset ja peruskorjaukset",
+        body: "Lisähuone, toinen kerros tai koko talon remontti. Vanhaan rakenteeseen liittyminen vaatii tarkkuutta – siitä sovitaan tarkasti ennen kuin ensimmäistä seinää avataan.",
+      },
+      {
+        title: "Autotallit, saunat ja piharakennukset",
+        body: "Autotallit, varastot, pihasaunat ja grillikatokset. Usein sellaisia töitä, joihin isot firmat eivät ehdi – tänne ne mahtuvat.",
+      },
+      {
+        title: "Terassit ja julkisivut",
+        body: "Terassit, julkisivuverhoukset ja ikkunoiden vaihdot. Työt, jotka näkyvät päivittäin ja joissa siisti jälki ratkaisee.",
+      },
+    ],
+  },
+
+  process: {
+    title: "Näin työ etenee",
+    lede: "Neljä vaihetta, ei yllätyksiä. Aikataulu ja hinta lyödään lukkoon ennen kuin työ alkaa.",
+    steps: [
+      {
+        title: "Tapaaminen tontilla",
+        body: "Käydään paikan päällä läpi, mitä haluat ja mitä tontti sallii. Maksuton, ei sitoumuksia.",
+      },
+      {
+        title: "Suunnitelma ja tarjous",
+        body: "Saat kirjallisen tarjouksen, jossa on eritelty työt, materiaalit ja aikataulu. Rakennuslupa-asioissa autetaan.",
+      },
+      {
+        title: "Rakentaminen",
+        body: "Työ etenee sovitussa järjestyksessä ja kuulet, mitä tapahtuu seuraavaksi. Muutokset sovitaan kirjallisesti.",
+      },
+      {
+        title: "Luovutus ja takuu",
+        body: "Käydään valmis työ yhdessä läpi. Takuu ja vastuuvakuutus kuuluvat jokaiseen urakkaan.",
+      },
+    ],
+  },
+
+  work: {
+    title: "Työnäytteitä",
+    lede: "Valmiita kohteita Tuusulasta ja lähikunnista.",
+    /**
+     * TODO: korvaa oikeilla kohteilla. `image` -> /public polku kun kuvat on,
+     * silloin placeholder vaihtuu <Image>-komponenttiin.
+     */
+    items: [
+      {
+        type: "Omakotitalo",
+        place: null as string | Todo,
+        body: null as string | Todo,
+        image: null as string | Todo,
+      },
+      {
+        type: "Laajennus",
+        place: null as string | Todo,
+        body: null as string | Todo,
+        image: null as string | Todo,
+      },
+      {
+        type: "Pihasauna",
+        place: null as string | Todo,
+        body: null as string | Todo,
+        image: null as string | Todo,
+      },
+    ],
+  },
+
+  areas: {
+    title: "Toiminta-alue",
+    /** Ensimmäinen on kotipaikka ja korostetaan. */
+    municipalities: [
+      "Tuusula",
+      "Järvenpää",
+      "Kerava",
+      "Nurmijärvi",
+      "Hyvinkää",
+      "Mäntsälä",
+      "Sipoo",
+      "Vantaa",
+    ],
+    note: "Kotipaikka Tuusula. Työmaat noin 40 kilometrin säteellä – tarpeeksi lähellä, että tontilla ollaan joka aamu ajoissa.",
+    asideTitle: "Ota yhteyttä ajoissa",
+    asideBody:
+      "Yhden rakentajan kalenteri täyttyy kausi kerrallaan. Keväällä alkava rakennus kannattaa sopia jo syksyllä, niin lupa-asiat ehditään hoitaa rauhassa.",
+    asideCta: "Kysy vapaita aikoja",
+  },
+
+  contact: {
+    title: "Pyydä tarjous",
+    lede: "Kerro lyhyesti, mitä olet rakentamassa ja missä. Vastaus yleensä seuraavana arkipäivänä.",
+  },
+} as const;
+
+/** Puhelinnumero tel:-linkkiin, tai null jos numeroa ei ole vielä syötetty. */
+export const telHref = site.phone ? `tel:${site.phone.replace(/\s/g, "")}` : null;

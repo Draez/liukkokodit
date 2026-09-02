@@ -1,3 +1,13 @@
+import { Nav } from "@/components/Nav";
+import { Hero } from "@/components/Hero";
+
 export default function Home() {
-  return <main id="sisalto" />;
+  return (
+    <>
+      <Nav />
+      <main id="sisalto">
+        <Hero />
+      </main>
+    </>
+  );
 }

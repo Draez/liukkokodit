@@ -1,0 +1,71 @@
+.drawing {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.l {
+  fill: none;
+  stroke: var(--pine);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.thin {
+  stroke-width: 0.9;
+  opacity: 0.75;
+}
+
+.dim {
+  stroke: var(--hero-muted);
+  stroke-width: 0.8;
+  opacity: 0.7;
+}
+
+.drawing text {
+  font-family: var(--font-body);
+  font-size: 9px;
+  fill: var(--hero-muted);
+  letter-spacing: 0.02em;
+}
+
+/* Piirustus "piirtyy" auki latauksessa. Koko efekti on rajattu
+   no-preference-haaraan, joten reduced motion saa staattisen kuvan. */
+@media (prefers-reduced-motion: no-preference) {
+  .l {
+    stroke-dasharray: 1200;
+    stroke-dashoffset: 1200;
+    animation: draw 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .d2 {
+    animation-delay: 0.5s;
+  }
+
+  .d3 {
+    animation-delay: 1s;
+  }
+
+  .d4 {
+    animation-delay: 1.5s;
+  }
+
+  .dim,
+  .drawing text {
+    opacity: 0;
+    animation: fade 0.6s 2.2s forwards;
+  }
+
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes fade {
+    to {
+      opacity: 0.7;
+    }
+  }
+}
