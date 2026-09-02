@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Liukko Kodit Oy — landing page
 
-## Getting Started
+Yksisivuinen laskeutumissivu Liukko Kodit Oy:lle (rakennusliike, Tuusula).
+Next.js 16 (App Router) + React 19, ei CSS-kehystä — tyylit on portattu
+suunnittelumallista design tokeneina ja CSS-moduuleina.
 
-First, run the development server:
+## Kehitys
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
+pnpm test       # vitest
+pnpm lint
+pnpm build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Puuttuvat tiedot
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Kaikki sivun tekstit ja yritystiedot ovat yhdessä tiedostossa:
+**`content/site.ts`**. Kentät joiden arvo on `null` renderöityvät sivulle
+korostettuna `[placeholderina]`, joten täyttämätön tieto ei mene huomaamatta
+julkaisuun.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ennen julkaisua tarvitaan:
 
-## Learn More
+| Kenttä | Missä näkyy |
+|---|---|
+| `owner` | Yhteystiedot, JSON-LD |
+| `phone` | Hero, navi (mobiili), yhteystiedot, JSON-LD |
+| `email` | Yhteystiedot, JSON-LD |
+| `businessId` | Yhteystiedot, footer, JSON-LD |
+| `work.items[].image` + `place` + `body` | Työnäytteet |
 
-To learn more about Next.js, take a look at the following resources:
+Kun `work.items[].image` osoittaa kuvaan (esim. `/tyot/omakotitalo-tuusula.jpg`
+kansiossa `public/`), viivoitettu paikanvaraaja vaihtuu automaattisesti
+`next/image`-komponenttiin.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Kun `phone` on täytetty, naviin ilmestyy kapealla näytöllä soittopainike ja
+heron "Soita"-painike muuttuu toimivaksi `tel:`-linkiksi.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Ympäristömuuttujat
 
-## Deploy on Vercel
+Katso `.env.example`. Lomake tarvitsee:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `RESEND_API_KEY` — https://resend.com/api-keys
+- `CONTACT_TO_EMAIL` — osoite johon tarjouspyynnöt ohjataan
+- `RESEND_FROM` — lähettäjä, vaatii Resendissä varmennetun domainin.
+  Ennen `liukkokodit.fi`-domainin varmennusta testaukseen käy
+  `onboarding@resend.dev`, joka lähettää vain Resend-tilin omaan
+  sähköpostiin.
+- `NEXT_PUBLIC_SITE_URL` — vasta kun oma domain on käytössä. Vercelillä
+  osoite päätellään muuten automaattisesti.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Lomake epäonnistuu turvallisesti: jos avaimet puuttuvat tai Resend palauttaa
+virheen, käyttäjälle näytetään puhelinnumero eikä lomake jää umpikujaan.
+
+## Julkaisu Vercelille
+
+1. Pushaa repo GitHubiin ja tuo projekti Verceliin (framework tunnistuu
+   automaattisesti, buildkomento `pnpm build`).
+2. Lisää ympäristömuuttujat projektin asetuksiin (Production + Preview).
+3. Liitä domain `liukkokodit.fi` ja aseta `NEXT_PUBLIC_SITE_URL`.
+
+## Rakenne
+
+```
+app/
+  layout.tsx           fontit, metadata, JSON-LD
+  page.tsx             osioiden kokoonpano
+  globals.css          design tokenit, teema, jaetut apuluokat
+  actions/sendQuote.ts lomakkeen server action (zod + Resend)
+  icon.tsx             favicon
+  opengraph-image.tsx  jakokuva
+  robots.ts sitemap.ts
+components/            yksi komponentti + CSS-moduuli per osio
+content/site.ts        kaikki tekstit ja yritystiedot
+lib/site-url.ts        julkisen osoitteen päättely
+assets/                OG-kuvan fontti (Bricolage Grotesque, OFL)
+tests/                 vitest
+```
+
+## Teema
+
+Sivu tukee kolmea tilaa: vaalea oletus, käyttöjärjestelmän tumma tila
+(`prefers-color-scheme`) ja pakotettu tila juurielementin `data-theme`
+-attribuutilla. Kaikki kolme on testattu.
