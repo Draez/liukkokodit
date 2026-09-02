@@ -84,3 +84,20 @@ tests/                 vitest
 Sivu tukee kolmea tilaa: vaalea oletus, käyttöjärjestelmän tumma tila
 (`prefers-color-scheme`) ja pakotettu tila juurielementin `data-theme`
 -attribuutilla. Kaikki kolme on testattu.
+
+## Liike
+
+Tekstit tulevat esiin pehmeästi: 600 ms häivytys ja 10 pikselin nousu
+(`cubic-bezier(.16,1,.3,1)`), 70 ms porrastus osion sisällä.
+
+Hero käyttää pelkkää CSS-animaatiota, joka käynnistyy heti ensimmäisessä
+maalauksessa. Se on tarkoituksellista: jos hero odottaisi JS:ää, teksti olisi
+läpinäkyvä hydraation ajan ja LCP siirtyisi sen taakse.
+
+Muut osiot paljastuvat vasta kun ne tulevat ruudulle
+(`components/Reveal.tsx`, IntersectionObserver, kerran per osio). Piilotus on
+CSS:ssä `@media (scripting: enabled)` -ehdon takana, joten ilman JS:ää mitään
+ei piiloteta. Koko efekti on `prefers-reduced-motion: no-preference` -ehdon
+sisällä.
+
+Porrastus säädetään `<Fade i={n}>` -propilla; viive on `n × 70 ms`.

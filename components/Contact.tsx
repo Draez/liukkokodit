@@ -1,17 +1,24 @@
 import { site, telHref } from "@/content/site";
+import { Fade } from "./Fade";
 import { QuoteForm } from "./QuoteForm";
+import { Reveal } from "./Reveal";
 import { Todo } from "./Todo";
 import styles from "./Contact.module.css";
 
 export function Contact() {
   return (
-    <section className={styles.contact} id="yhteys">
+    <Reveal className={styles.contact} id="yhteys">
       <div className="wrap">
         <div>
-          <h2>{site.contact.title}</h2>
-          <p className={styles.lede}>{site.contact.lede}</p>
+          <Fade as="h2" i={0}>
+            {site.contact.title}
+          </Fade>
 
-          <dl className={styles.details}>
+          <Fade as="p" i={1} className={styles.lede}>
+            {site.contact.lede}
+          </Fade>
+
+          <Fade as="dl" i={2} className={styles.details}>
             <dt>Puhelin</dt>
             <dd>
               {telHref ? (
@@ -38,11 +45,13 @@ export function Contact() {
 
             <dt>Y-tunnus</dt>
             <dd>{site.businessId ?? <Todo>0000000-0</Todo>}</dd>
-          </dl>
+          </Fade>
         </div>
 
-        <QuoteForm />
+        <Fade i={3}>
+          <QuoteForm />
+        </Fade>
       </div>
-    </section>
+    </Reveal>
   );
 }

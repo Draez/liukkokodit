@@ -1,17 +1,24 @@
 import { site, telHref } from "@/content/site";
 import { HouseDrawing } from "./HouseDrawing";
+import { Fade } from "./Fade";
 import { Todo } from "./Todo";
 import styles from "./Hero.module.css";
 
 export function Hero() {
   return (
-    <header className={styles.hero}>
+    // on-load: hero häivähtää heti latauksessa, ei vieritykseen sidottuna.
+    <header className={`${styles.hero} on-load`}>
       <div className="wrap">
         <div>
-          <h1>{site.hero.title}</h1>
-          <p className={styles.lede}>{site.hero.lede}</p>
+          <Fade as="h1" i={0}>
+            {site.hero.title}
+          </Fade>
 
-          <div className={styles.cta}>
+          <Fade as="p" i={1} className={styles.lede}>
+            {site.hero.lede}
+          </Fade>
+
+          <Fade i={2} className={styles.cta}>
             <a className="btn btn-pine" href="#yhteys">
               Pyydä tarjous
             </a>
@@ -24,16 +31,16 @@ export function Hero() {
                 Soita <Todo>puhelinnumero</Todo>
               </span>
             )}
-          </div>
+          </Fade>
 
-          <p className={styles.area}>
+          <Fade as="p" i={3} className={styles.area}>
             {site.hero.area} · <strong>{site.hero.areaStrong}</strong>
-          </p>
+          </Fade>
         </div>
 
-        <div className={styles.figure}>
+        <Fade i={1} className={styles.figure}>
           <HouseDrawing />
-        </div>
+        </Fade>
       </div>
     </header>
   );

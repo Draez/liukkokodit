@@ -1,23 +1,23 @@
 import { site } from "@/content/site";
+import { Fade } from "./Fade";
+import { Reveal } from "./Reveal";
+import { SecHead } from "./SecHead";
 import styles from "./Services.module.css";
 
 export function Services() {
   return (
-    <section id="palvelut">
+    <Reveal id="palvelut">
       <div className="wrap">
-        <div className="sec-head">
-          <h2>{site.services.title}</h2>
-          <p>{site.services.lede}</p>
-        </div>
+        <SecHead title={site.services.title} lede={site.services.lede} />
         <div className={styles.list}>
-          {site.services.items.map((item) => (
-            <div className={styles.row} key={item.title}>
+          {site.services.items.map((item, i) => (
+            <Fade key={item.title} className={styles.row} i={i + 2}>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
-            </div>
+            </Fade>
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

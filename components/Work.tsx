@@ -1,19 +1,19 @@
 import Image from "next/image";
 import { site } from "@/content/site";
+import { Fade } from "./Fade";
+import { Reveal } from "./Reveal";
+import { SecHead } from "./SecHead";
 import { Todo, Value } from "./Todo";
 import styles from "./Work.module.css";
 
 export function Work() {
   return (
-    <section id="tyot">
+    <Reveal id="tyot">
       <div className="wrap">
-        <div className="sec-head">
-          <h2>{site.work.title}</h2>
-          <p>{site.work.lede}</p>
-        </div>
+        <SecHead title={site.work.title} lede={site.work.lede} />
         <div className={styles.grid}>
           {site.work.items.map((item, i) => (
-            <article className={styles.work} key={item.type}>
+            <Fade key={item.type} as="article" className={styles.work} i={i + 2}>
               {item.image ? (
                 <div className={styles.photo}>
                   <Image
@@ -40,10 +40,10 @@ export function Work() {
                   />
                 </p>
               </div>
-            </article>
+            </Fade>
           ))}
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }
