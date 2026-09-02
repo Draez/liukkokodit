@@ -1,49 +1,215 @@
+/* ==========================================================================
+   Liukko Kodit — design tokens, reset, base type, shared utilities.
+   Section-specific layout lives in the per-component CSS modules.
+   ========================================================================== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --spruce: #1e3a2f;
+  --spruce-deep: #152a22;
+  --pine: #d9b98a;
+  --pine-soft: #ebd9bc;
+  --birch: #f1f2ee;
+  --paper: #fafaf8;
+  --ink: #1d2320;
+  --ink-2: #4a544f;
+  --line: #d5d9d3;
+  --hero-bg: var(--spruce);
+  --hero-ink: #f3f1ea;
+  --hero-muted: #b9c8bf;
+  --focus: #c48a3a;
+
+  --font-display: var(--font-bricolage), "Instrument Sans", system-ui, sans-serif;
+  --font-body: var(--font-instrument), system-ui, -apple-system, "Segoe UI",
+    Helvetica, Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --birch: #141b18;
+    --paper: #0f1512;
+    --ink: #ecebe4;
+    --ink-2: #a8b3ac;
+    --line: #2b3630;
+    --hero-bg: #152a22;
+    --pine-soft: #3a3122;
   }
 }
 
-html {
-  height: 100%;
+:root[data-theme="dark"] {
+  --birch: #141b18;
+  --paper: #0f1512;
+  --ink: #ecebe4;
+  --ink-2: #a8b3ac;
+  --line: #2b3630;
+  --hero-bg: #152a22;
+  --pine-soft: #3a3122;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* --- reset / base ------------------------------------------------------- */
 
 * {
   box-sizing: border-box;
-  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+  font-variation-settings: "opsz" 72;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
   margin: 0;
 }
 
 a {
   color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+section {
+  padding: 5.5rem 0;
+}
+
+/* --- layout utilities --------------------------------------------------- */
+
+.wrap {
+  width: min(1120px, calc(100% - 2.5rem));
+  margin-inline: auto;
+}
+
+.sec-head {
+  max-width: 38ch;
+  margin-bottom: 3rem;
+}
+
+.sec-head p {
+  margin-top: 1rem;
+  color: var(--ink-2);
+  font-size: 1.1rem;
+}
+
+/* --- buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-pine {
+  background: var(--pine);
+  color: var(--spruce-deep);
+  border-color: var(--pine);
+}
+
+.btn-pine:hover {
+  background: #e3c79e;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--hero-ink);
+  border-color: rgba(243, 241, 234, 0.4);
+}
+
+.btn-ghost:hover {
+  border-color: var(--hero-ink);
+}
+
+.btn-spruce {
+  background: var(--spruce);
+  color: #f3f1ea;
+  border-color: var(--spruce);
+}
+
+.btn-spruce:hover {
+  background: var(--spruce-deep);
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* --- placeholders for business data that is not in yet ------------------ */
+
+.todo {
+  background: var(--pine-soft);
+  border-radius: 3px;
+  padding: 0 0.3em;
+}
+
+/* --- skip link ---------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--pine);
+  color: var(--spruce-deep);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 6px 0;
+  font-weight: 600;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.skip-link:focus {
+  left: 0;
 }
