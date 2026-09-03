@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site, telHref } from "@/content/site";
 import styles from "./Nav.module.css";
 
@@ -5,7 +6,7 @@ export function Nav() {
   return (
     <nav className={styles.nav} aria-label="Päävalikko">
       <div className="wrap">
-        <a className={styles.brand} href="#">
+        <Link className={styles.brand} href="/">
           <svg viewBox="0 0 26 26" aria-hidden="true">
             <path
               d="M3 13 13 4l10 9M6 11.5V22h14V11.5"
@@ -23,12 +24,12 @@ export function Nav() {
             />
           </svg>
           {site.brand}
-        </a>
+        </Link>
 
         <ul className={styles.links}>
           {site.nav.map((item) => (
             <li key={item.href}>
-              <a href={item.href}>{item.label}</a>
+              <Link href={item.href}>{item.label}</Link>
             </li>
           ))}
         </ul>

@@ -21,11 +21,13 @@ export const site = {
   /** TODO: Y-tunnus muodossa 0000000-0 */
   businessId: null as string | Todo,
 
+  // Ankkurit ovat /-alkuisia, jotta ne toimivat myös alasivuilta
+  // (/tyonaytteet/[id]); etusivulla /#palvelut vierittää aivan kuten #palvelut.
   nav: [
-    { href: "#palvelut", label: "Palvelut" },
-    { href: "#prosessi", label: "Näin työ etenee" },
-    { href: "#tyot", label: "Työnäytteet" },
-    { href: "#alue", label: "Toiminta-alue" },
+    { href: "/#palvelut", label: "Palvelut" },
+    { href: "/#prosessi", label: "Näin työ etenee" },
+    { href: "/#tyot", label: "Työnäytteet" },
+    { href: "/#alue", label: "Toiminta-alue" },
   ],
 
   hero: {
@@ -103,27 +105,40 @@ export const site = {
   work: {
     title: "Työnäytteitä",
     lede: "Valmiita kohteita Tuusulasta ja lähikunnista.",
+    /** Linkkiteksti kortista kohteen omalle sivulle /tyonaytteet/[id]. */
+    more: "Katso kohde",
+    back: "Takaisin työnäytteisiin",
     /**
      * TODO: korvaa oikeilla kohteilla. `image` -> /public polku kun kuvat on,
      * silloin placeholder vaihtuu <Image>-komponenttiin.
+     *
+     * `id` on kohteen URL-osa (/tyonaytteet/omakotitalo-tuusula): pienet
+     * kirjaimet, numerot ja viivat. `body` on kortin lyhyt teksti, `details`
+     * kohdesivun pidempi kuvaus.
      */
     items: [
       {
+        id: "omakotitalo",
         type: "Omakotitalo",
         place: null as string | Todo,
         body: null as string | Todo,
+        details: null as string | Todo,
         image: null as string | Todo,
       },
       {
+        id: "laajennus",
         type: "Laajennus",
         place: null as string | Todo,
         body: null as string | Todo,
+        details: null as string | Todo,
         image: null as string | Todo,
       },
       {
+        id: "pihasauna",
         type: "Pihasauna",
         place: null as string | Todo,
         body: null as string | Todo,
+        details: null as string | Todo,
         image: null as string | Todo,
       },
     ],
@@ -154,6 +169,13 @@ export const site = {
     lede: "Kerro lyhyesti, mitä olet rakentamassa ja missä. Vastaus yleensä seuraavana arkipäivänä.",
   },
 } as const;
+
+export type WorkItem = (typeof site.work.items)[number];
+
+/** Kohde URL-osan perusteella, tai undefined jos sellaista ei ole. */
+export function findWork(id: string): WorkItem | undefined {
+  return site.work.items.find((item) => item.id === id);
+}
 
 /** Puhelinnumero tel:-linkkiin, tai null jos numeroa ei ole vielä syötetty. */
 export const telHref = site.phone ? `tel:${site.phone.replace(/\s/g, "")}` : null;

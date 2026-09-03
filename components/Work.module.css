@@ -49,3 +49,53 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Kortti on yksi linkki: otsikon linkin ::after levittyy koko artiklan
+   päälle, joten klikkauskohde on koko kortti mutta saavutettavuuspuussa
+   vain yksi linkki. */
+.work {
+  position: relative;
+  transition: border-color 0.15s, transform 0.2s;
+}
+
+.work:hover,
+.work:focus-within {
+  border-color: var(--ink-2);
+}
+
+.link {
+  text-decoration: none;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.work:has(.link:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.more {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--spruce);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .more {
+    color: var(--pine);
+  }
+}
+
+:root[data-theme="dark"] .more {
+  color: var(--pine);
+}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Fade } from "./Fade";
 import { Reveal } from "./Reveal";
@@ -31,7 +32,10 @@ export function Work() {
               )}
               <div className={styles.body}>
                 <h3>
-                  {item.type}, <Value value={item.place} placeholder="paikka" />
+                  {/* Koko kortti on klikattava (::after peittää artiklan). */}
+                  <Link className={styles.link} href={`/tyonaytteet/${item.id}`}>
+                    {item.type}, <Value value={item.place} placeholder="paikka" />
+                  </Link>
                 </h3>
                 <p>
                   <Value
@@ -39,6 +43,9 @@ export function Work() {
                     placeholder="Lyhyt kuvaus: koko m², rakennusaika, erityispiirre."
                   />
                 </p>
+                <span className={styles.more} aria-hidden="true">
+                  {site.work.more} →
+                </span>
               </div>
             </Fade>
           ))}

@@ -39,7 +39,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fi" className={`${bricolage.variable} ${instrument.variable}`}>
+    // data-scroll-behavior: Next 16 ei enää ohita CSS:n scroll-behavior: smooth
+    // -asetusta reittisiirtymissä. Ilman tätä "vieritys ylös" animoituu, ja
+    // reititin ehtii tarkistaa sijainnin ennen animaatiota ja vierittää sivun
+    // ensimmäisen elementin (ei sivun yläreunan) näkyviin.
+    <html
+      lang="fi"
+      className={`${bricolage.variable} ${instrument.variable}`}
+      data-scroll-behavior="smooth"
+    >
       <body>
         <a className="skip-link" href="#sisalto">
           Siirry sisältöön

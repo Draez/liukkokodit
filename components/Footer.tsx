@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/content/site";
 import { Todo } from "./Todo";
 import styles from "./Footer.module.css";
@@ -13,7 +14,7 @@ export function Footer() {
           © {year} {site.company} · {site.city}
         </span>
         <span>
-          <a href="#yhteys">Yhteystiedot</a> · Y-tunnus{" "}
+          <Link href="/#yhteys">Yhteystiedot</Link> · Y-tunnus{" "}
           {site.businessId ?? <Todo>0000000-0</Todo>}
         </span>
       </div>
