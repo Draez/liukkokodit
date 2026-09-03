@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
-import { siteUrl } from "@/lib/site-url";
+import { isIndexable, siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -26,6 +26,8 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/" },
+  // Testiosoitteessa noindex joka sivulle; alasivut perivät tämän.
+  robots: isIndexable ? undefined : { index: false, follow: false },
   openGraph: {
     type: "website",
     locale: "fi_FI",

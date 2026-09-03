@@ -49,7 +49,11 @@ Katso `.env.example`. Lomake tarvitsee:
   `onboarding@resend.dev`, joka lähettää vain Resend-tilin omaan
   sähköpostiin.
 - `NEXT_PUBLIC_SITE_URL` — vasta kun oma domain on käytössä. Vercelillä
-  osoite päätellään muuten automaattisesti.
+  osoite päätellään muuten automaattisesti. **Niin kauan kuin tämä on
+  asettamatta, sivusto on piilossa hakukoneilta**: robots.txt kieltää
+  indeksoinnin ja joka sivulla on `noindex`-tagi. Testiosoite ei siis päädy
+  Googleen, ja sivusto avautuu hakukoneille samalla kun domain otetaan
+  käyttöön.
 
 Lomake epäonnistuu turvallisesti: jos avaimet puuttuvat tai Resend palauttaa
 virheen, käyttäjälle näytetään puhelinnumero eikä lomake jää umpikujaan.

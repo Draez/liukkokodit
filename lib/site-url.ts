@@ -12,8 +12,17 @@ function env(name: string): string | undefined {
   return value ? value : undefined;
 }
 
+const publicUrl = env("NEXT_PUBLIC_SITE_URL");
 const vercelUrl = env("VERCEL_PROJECT_PRODUCTION_URL");
 
 export const siteUrl =
-  env("NEXT_PUBLIC_SITE_URL") ??
-  (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000");
+  publicUrl ?? (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000");
+
+/**
+ * Saako hakukone indeksoida sivuston. Testiosoitteessa (vercel.app,
+ * localhost) ei: robots.txt kieltää kaiken ja joka sivu saa noindex-tagin.
+ * Sivusto avautuu hakukoneille automaattisesti, kun oma domain otetaan
+ * käyttöön ja NEXT_PUBLIC_SITE_URL asetetaan – erillistä lippua, joka pitäisi
+ * muistaa poistaa julkaisussa, ei ole.
+ */
+export const isIndexable = publicUrl !== undefined;

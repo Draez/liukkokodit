@@ -10,6 +10,11 @@ async function loadSiteUrl() {
   return (await import("@/lib/site-url")).siteUrl;
 }
 
+async function loadIsIndexable() {
+  vi.resetModules();
+  return (await import("@/lib/site-url")).isIndexable;
+}
+
 const saved = { ...process.env };
 
 beforeEach(() => {
@@ -50,5 +55,22 @@ describe("siteUrl", () => {
     await expect(
       loadSiteUrl().then((u) => new URL(u).origin),
     ).resolves.toBe("http://localhost:3000");
+  });
+});
+
+describe("isIndexable", () => {
+  it("piilottaa sivuston hakukoneilta, kun omaa domainia ei ole asetettu", async () => {
+    process.env.VERCEL_PROJECT_PRODUCTION_URL = "liukko-kodit.vercel.app";
+    await expect(loadIsIndexable()).resolves.toBe(false);
+  });
+
+  it("pitää tyhjän NEXT_PUBLIC_SITE_URL:n piilotettuna", async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = "  ";
+    await expect(loadIsIndexable()).resolves.toBe(false);
+  });
+
+  it("avaa sivuston hakukoneille, kun oma domain on asetettu", async () => {
+    process.env.NEXT_PUBLIC_SITE_URL = "https://liukkokodit.fi";
+    await expect(loadIsIndexable()).resolves.toBe(true);
   });
 });
