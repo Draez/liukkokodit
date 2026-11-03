@@ -11,8 +11,7 @@ export function Why() {
         <SecHead title={site.why.title} lede={site.why.lede} />
         <div className={styles.grid}>
           {site.why.items.map((item, i) => (
-            <Fade key={item.title} i={i + 2}>
-              <div className={styles.mark} />
+            <Fade key={item.title} className={styles.item} i={i + 2}>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
             </Fade>

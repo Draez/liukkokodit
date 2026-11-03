@@ -1,19 +1,30 @@
+/* Kuva pääosassa: jokainen kohde omalla rivillään, iso kuva noin 2/3
+   leveydestä ja kapea tekstipalsta vieressä. Puoli vaihtuu riveittäin. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 6rem;
 }
 
 .work {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--birch);
+  position: relative;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: end;
+}
+
+.work:nth-child(even) {
+  grid-template-columns: 1fr 2fr;
+}
+
+.work:nth-child(even) .photo,
+.work:nth-child(even) .ph {
+  order: 2;
 }
 
 /* Viivoitettu paikanvaraaja niin kauan kuin oikeaa kuvaa ei ole. */
 .ph {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
   background: repeating-linear-gradient(
     135deg,
     transparent 0 14px,
@@ -27,42 +38,71 @@
 
 .photo {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
 }
 
 .photo img {
   object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .work:hover .photo img {
+    transform: scale(1.03);
+  }
 }
 
 .body {
-  padding: 1.1rem 1.25rem 1.4rem;
+  padding-bottom: 0.5rem;
 }
 
-.body p {
+.num {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-2);
+  margin-bottom: 1rem;
+}
+
+.body h3 {
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+}
+
+.body p:not(.num) {
   color: var(--ink-2);
   font-size: 0.98rem;
-  margin-top: 0.35rem;
+  margin-top: 0.75rem;
+  max-width: 34ch;
 }
 
 @media (max-width: 800px) {
   .grid {
+    gap: 3.5rem;
+  }
+
+  .work,
+  .work:nth-child(even) {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .work:nth-child(even) .photo,
+  .work:nth-child(even) .ph {
+    order: 0;
+  }
+
+  .photo {
+    margin-inline: -1.25rem;
+  }
+
+  .ph {
+    margin-inline: -1.25rem;
   }
 }
 
 /* Kortti on yksi linkki: otsikon linkin ::after levittyy koko artiklan
    päälle, joten klikkauskohde on koko kortti mutta saavutettavuuspuussa
    vain yksi linkki. */
-.work {
-  position: relative;
-  transition: border-color 0.15s, transform 0.2s;
-}
-
-.work:hover,
-.work:focus-within {
-  border-color: var(--ink-2);
-}
-
 .link {
   text-decoration: none;
 }
@@ -79,23 +119,14 @@
 
 .work:has(.link:focus-visible) {
   outline: 3px solid var(--focus);
-  outline-offset: 3px;
+  outline-offset: 6px;
 }
 
 .more {
   display: inline-block;
-  margin-top: 0.9rem;
-  font-weight: 600;
+  margin-top: 1.5rem;
+  font-weight: 500;
   font-size: 0.95rem;
-  color: var(--spruce);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .more {
-    color: var(--pine);
-  }
-}
-
-:root[data-theme="dark"] .more {
-  color: var(--pine);
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid currentColor;
 }

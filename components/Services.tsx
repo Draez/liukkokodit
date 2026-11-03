@@ -6,7 +6,7 @@ import styles from "./Services.module.css";
 
 export function Services() {
   return (
-    <Reveal id="palvelut">
+    <Reveal className={styles.services} id="palvelut">
       <div className="wrap">
         <SecHead title={site.services.title} lede={site.services.lede} />
         <div className={styles.list}>

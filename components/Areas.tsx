@@ -30,7 +30,7 @@ export function Areas() {
             {site.areas.asideBody}
           </Fade>
           <Fade as="p" i={3} className={styles.asideCta}>
-            <a className="btn btn-spruce" href="#yhteys">
+            <a className="btn" href="#yhteys">
               {site.areas.asideCta}
             </a>
           </Fade>

@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { isIndexable, siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+// Ohut serif otsikoihin (Nooa-tyyliin), selkeä groteski leipätekstiin.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   axes: ["opsz"],
   display: "swap",
 });
 
-const instrument = Instrument_Sans({
-  variable: "--font-instrument",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -47,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // ensimmäisen elementin (ei sivun yläreunan) näkyviin.
     <html
       lang="fi"
-      className={`${bricolage.variable} ${instrument.variable}`}
+      className={`${fraunces.variable} ${inter.variable}`}
       data-scroll-behavior="smooth"
     >
       <body>

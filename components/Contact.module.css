@@ -1,3 +1,9 @@
+/* Musta lomakeosio (Nooa: tumma yhteydenottolomake). */
+.contact {
+  background: var(--black);
+  color: var(--on-black);
+}
+
 .contact :global(.wrap) {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -7,7 +13,7 @@
 
 .lede {
   margin-top: 1rem;
-  color: var(--ink-2);
+  color: var(--muted-on-black);
   max-width: 40ch;
 }
 
@@ -19,7 +25,7 @@
 }
 
 .details dt {
-  color: var(--ink-2);
+  color: var(--muted-on-black);
 }
 
 .details dd {
@@ -29,7 +35,7 @@
 
 .details dd a {
   text-decoration: none;
-  border-bottom: 1px solid var(--pine);
+  border-bottom: 1px solid var(--wood);
 }
 
 @media (max-width: 760px) {

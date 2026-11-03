@@ -34,9 +34,7 @@
 .ph {
   margin-top: 2.5rem;
   aspect-ratio: 16 / 10;
-  border-radius: 6px;
   overflow: hidden;
-  border: 1px solid var(--line);
 }
 
 .photo {
@@ -65,6 +63,37 @@
   max-width: 62ch;
   font-size: 1.05rem;
   white-space: pre-line;
+}
+
+.gallery {
+  margin-top: 2.5rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.galleryItem {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.galleryItem img {
+  object-fit: cover;
+}
+
+/* Pariton määrä kuvia: ensimmäinen leveänä, niin ruudukkoon ei jää aukkoa. */
+.galleryItem:first-child:nth-last-child(odd) {
+  grid-column: 1 / -1;
+  aspect-ratio: 16 / 9;
+}
+
+@media (max-width: 640px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
 }
 
 .cta {

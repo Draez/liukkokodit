@@ -35,6 +35,8 @@ export const site = {
     lede: "Liukko Kodit on yhden rakentajan rakennusliike Tuusulassa. Sovit työstä suoraan tekijän kanssa – ja hän on se, joka seisoo tontillasi joka aamu.",
     area: "Omakotitalot, laajennukset ja piharakennukset",
     areaStrong: "Tuusula ja Keski-Uusimaa",
+    image: "/hero-olohuone.jpg",
+    imageAlt: "Valoisa olohuone ja keittiö valmiissa paritalossa",
   },
 
   why: {
@@ -109,37 +111,59 @@ export const site = {
     more: "Katso kohde",
     back: "Takaisin työnäytteisiin",
     /**
-     * TODO: korvaa oikeilla kohteilla. `image` -> /public polku kun kuvat on,
-     * silloin placeholder vaihtuu <Image>-komponenttiin.
+     * TODO: tarkista otsikot (`type`) ja täytä paikka ja tekstit.
      *
      * `id` on kohteen URL-osa (/tyonaytteet/omakotitalo-tuusula): pienet
      * kirjaimet, numerot ja viivat. `body` on kortin lyhyt teksti, `details`
-     * kohdesivun pidempi kuvaus.
+     * kohdesivun pidempi kuvaus. `image` on etusivun kortin ja kohdesivun
+     * pääkuva, `gallery` kohdesivun muut kuvat. Kuvat ovat kansiossa
+     * /public/tyonaytteet/[id]/.
      */
     items: [
       {
-        id: "omakotitalo",
+        id: "omakotitalo-1",
         type: "Omakotitalo",
         place: null as string | Todo,
         body: null as string | Todo,
         details: null as string | Todo,
-        image: null as string | Todo,
+        image: "/tyonaytteet/omakotitalo-1/01.jpg" as string | Todo,
+        gallery: [
+          { src: "/tyonaytteet/omakotitalo-1/02.jpg", alt: "Talo ja terassi ylhäältä kuvattuna" },
+          { src: "/tyonaytteet/omakotitalo-1/03.jpg", alt: "Tummaksi verhottu talo pihan puolelta" },
+          { src: "/tyonaytteet/omakotitalo-1/04.jpg", alt: "Autotalli ja katos" },
+          { src: "/tyonaytteet/omakotitalo-1/05.jpg", alt: "Talo ja piha tien suunnasta" },
+          { src: "/tyonaytteet/omakotitalo-1/06.jpg", alt: "Talon julkisivu ja terassi" },
+        ],
       },
       {
-        id: "laajennus",
-        type: "Laajennus",
+        id: "omakotitalo-2",
+        type: "Omakotitalo",
         place: null as string | Todo,
         body: null as string | Todo,
         details: null as string | Todo,
-        image: null as string | Todo,
+        image: "/tyonaytteet/omakotitalo-2/01.jpg" as string | Todo,
+        gallery: [
+          { src: "/tyonaytteet/omakotitalo-2/02.jpg", alt: "Avoin keittiö ja olohuone" },
+          { src: "/tyonaytteet/omakotitalo-2/03.jpg", alt: "Makuuhuone" },
+          { src: "/tyonaytteet/omakotitalo-2/04.jpg", alt: "Katettu terassi" },
+          { src: "/tyonaytteet/omakotitalo-2/05.jpg", alt: "Sauna" },
+          { src: "/tyonaytteet/omakotitalo-2/06.jpg", alt: "Kylpyhuone ja saunan lasiseinä" },
+        ],
       },
       {
-        id: "pihasauna",
-        type: "Pihasauna",
+        id: "paritalo",
+        type: "Paritalo",
         place: null as string | Todo,
         body: null as string | Todo,
         details: null as string | Todo,
-        image: null as string | Todo,
+        image: "/tyonaytteet/paritalo/01.jpg" as string | Todo,
+        gallery: [
+          { src: "/tyonaytteet/paritalo/02.jpg", alt: "Terassi ja nurmipiha" },
+          { src: "/tyonaytteet/paritalo/03.jpg", alt: "Keittiö ja ruokapöytä" },
+          { src: "/tyonaytteet/paritalo/04.jpg", alt: "Olohuone ja keittiö" },
+          { src: "/tyonaytteet/paritalo/05.jpg", alt: "Sisäänkäynnit ja autokatos" },
+          { src: "/tyonaytteet/paritalo/06.jpg", alt: "Makuuhuone" },
+        ],
       },
     ],
   },

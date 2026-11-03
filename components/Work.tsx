@@ -14,14 +14,14 @@ export function Work() {
         <SecHead title={site.work.title} lede={site.work.lede} />
         <div className={styles.grid}>
           {site.work.items.map((item, i) => (
-            <Fade key={item.type} as="article" className={styles.work} i={i + 2}>
+            <Fade key={item.id} as="article" className={styles.work} i={2}>
               {item.image ? (
                 <div className={styles.photo}>
                   <Image
                     src={item.image}
                     alt={`${item.type}, ${item.place ?? site.city}`}
                     fill
-                    sizes="(max-width: 800px) 100vw, 33vw"
+                    sizes="(max-width: 800px) 100vw, 800px"
                     priority={false}
                   />
                 </div>
@@ -31,6 +31,9 @@ export function Work() {
                 </div>
               )}
               <div className={styles.body}>
+                <p className={styles.num}>
+                  {String(i + 1).padStart(2, "0")} / {String(site.work.items.length).padStart(2, "0")}
+                </p>
                 <h3>
                   {/* Koko kortti on klikattava (::after peittää artiklan). */}
                   <Link className={styles.link} href={`/tyonaytteet/${item.id}`}>

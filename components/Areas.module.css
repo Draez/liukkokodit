@@ -1,5 +1,5 @@
 .areas {
-  background: var(--birch);
+  background: var(--sand);
 }
 
 .areas :global(.wrap) {
@@ -20,17 +20,14 @@
 }
 
 .chips li {
-  border: 1px solid var(--line);
-  border-radius: 999px;
+  border: 1px solid var(--ink);
   padding: 0.4rem 0.95rem;
   font-size: 0.95rem;
-  background: var(--paper);
 }
 
 .chips li.home {
-  background: var(--spruce);
-  color: #f3f1ea;
-  border-color: var(--spruce);
+  background: var(--black);
+  color: var(--on-black);
 }
 
 .note {

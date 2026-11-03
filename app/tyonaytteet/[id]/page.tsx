@@ -82,8 +82,28 @@ export default async function WorkPage({ params }: Props) {
               />
             </Fade>
 
+            {item.gallery.length > 0 && (
+              <ul className={styles.gallery}>
+                {item.gallery.map((photo, i) => (
+                  <Fade key={photo.src} as="li" i={5 + i} className={styles.galleryItem}>
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      // Parittomalla määrällä ensimmäinen kuva on täysleveä (ks. CSS).
+                      sizes={
+                        i === 0 && item.gallery.length % 2 === 1
+                          ? "(max-width: 820px) 100vw, 820px"
+                          : "(max-width: 640px) 100vw, 410px"
+                      }
+                    />
+                  </Fade>
+                ))}
+              </ul>
+            )}
+
             <Fade i={5} className={styles.cta}>
-              <Link className="btn btn-spruce" href="/#yhteys">
+              <Link className="btn" href="/#yhteys">
                 Pyydä tarjous vastaavasta
               </Link>
             </Fade>

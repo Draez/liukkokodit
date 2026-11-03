@@ -108,7 +108,7 @@ export function QuoteForm() {
         <input id={`${id}-yritys`} name="yritys" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <button className="btn btn-spruce" type="submit" disabled={pending}>
+      <button className="btn" type="submit" disabled={pending}>
         {pending ? "Lähetetään…" : "Lähetä tarjouspyyntö"}
       </button>
 

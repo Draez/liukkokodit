@@ -1,59 +1,65 @@
+/* Nooa-tyyliin: koko leveyden kuva ylhäällä, keskitetty lausuma alla. */
 .hero {
-  background: var(--hero-bg);
-  color: var(--hero-ink);
-  padding: 4.5rem 0 5rem;
+  padding: 1.25rem 0 7rem;
+}
+
+.photo {
+  position: relative;
+  height: clamp(320px, 72vh, 780px);
   overflow: hidden;
 }
 
-.hero :global(.wrap) {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 3rem;
-  align-items: center;
+.photo img {
+  object-fit: cover;
+}
+
+.text {
+  max-width: 780px;
+  margin: 5.5rem auto 0;
+  text-align: center;
 }
 
 .hero h1 {
-  font-size: clamp(2.6rem, 6vw, 4.9rem);
+  font-size: clamp(2.4rem, 5.2vw, 4.25rem);
   font-variation-settings: "opsz" 96;
-  font-weight: 650;
 }
 
 .lede {
-  margin-top: 1.5rem;
+  margin: 1.75rem auto 0;
   font-size: 1.15rem;
-  line-height: 1.55;
-  color: var(--hero-muted);
-  max-width: 32ch;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 46ch;
 }
 
 .cta {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 2.2rem;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
   flex-wrap: wrap;
 }
 
 .area {
-  margin-top: 2.5rem;
-  font-size: 0.95rem;
-  color: var(--hero-muted);
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
 }
 
-.area strong {
-  color: var(--hero-ink);
-  font-weight: 500;
-}
-
-@media (max-width: 860px) {
+@media (max-width: 760px) {
   .hero {
-    padding: 3rem 0 3.5rem;
+    padding: 0 0 4.5rem;
   }
 
-  .hero :global(.wrap) {
-    grid-template-columns: 1fr;
+  /* Mobiilissa kuva reunasta reunaan. */
+  .photo {
+    margin-inline: -1.25rem;
+    height: 56vh;
   }
 
-  .figure {
-    max-width: 480px;
+  .text {
+    margin-top: 3rem;
   }
 }

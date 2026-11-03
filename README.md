@@ -79,15 +79,18 @@ app/
 components/            yksi komponentti + CSS-moduuli per osio
 content/site.ts        kaikki tekstit ja yritystiedot
 lib/site-url.ts        julkisen osoitteen päättely
-assets/                OG-kuvan fontti (Bricolage Grotesque, OFL)
+assets/                OG-kuvan fontti (Fraunces Light, OFL)
 tests/                 vitest
 ```
 
 ## Teema
 
-Sivu tukee kolmea tilaa: vaalea oletus, käyttöjärjestelmän tumma tila
-(`prefers-color-scheme`) ja pakotettu tila juurielementin `data-theme`
--attribuutilla. Kaikki kolme on testattu.
+Beige ja musta, ei tummaa tilaa: brändi näyttää aina samalta käyttöjärjestelmän
+asetuksista riippumatta. Värit ovat `app/globals.css`:n `:root`-muuttujissa.
+
+Logo on piirretty SVG:ksi asiakkaan logokuvan pohjalta: `components/Logo.tsx`
+(polut `components/logo-paths.ts`). Valmiit tiedostot asiakkaan käyttöön
+ovat kansiossa `public/logo/`.
 
 ## Liike
 

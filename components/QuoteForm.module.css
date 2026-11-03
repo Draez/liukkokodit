@@ -10,41 +10,57 @@
   font-weight: 500;
 }
 
+/* Lomake on mustalla pohjalla: kentät ovat pelkkiä alaviivoja. */
 .form input,
 .form textarea {
   font: inherit;
-  padding: 0.8rem 0.9rem;
-  border: 1.5px solid var(--line);
-  border-radius: 6px;
-  background: var(--paper);
-  color: var(--ink);
+  padding: 0.7rem 0;
+  border: 0;
+  border-bottom: 1px solid rgba(239, 234, 225, 0.35);
+  border-radius: 0;
+  background: transparent;
+  color: var(--on-black);
   width: 100%;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: rgba(239, 234, 225, 0.45);
 }
 
 .form input:focus,
 .form textarea:focus {
-  border-color: var(--spruce);
+  border-bottom-color: var(--on-black);
+}
+
+.form :global(.btn) {
+  justify-self: start;
+  margin-top: 0.75rem;
 }
 
 .form textarea {
-  min-height: 130px;
+  min-height: 110px;
   resize: vertical;
 }
 
 .form input[aria-invalid="true"],
 .form textarea[aria-invalid="true"] {
-  border-color: #a33a2a;
+  border-bottom-color: var(--error);
+}
+
+.form {
+  --error: #e9a08f;
 }
 
 .note {
   font-size: 0.9rem;
-  color: var(--ink-2);
+  color: var(--muted-on-black);
 }
 
 .error {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #a33a2a;
+  color: var(--error);
 }
 
 /* Hunajapurkki: pois näkyvistä ja pois ruudunlukijalta, mutta täytettävissä
@@ -58,10 +74,8 @@
 }
 
 .done {
-  border: 1.5px solid var(--pine);
-  border-radius: 6px;
+  border: 1px solid rgba(239, 234, 225, 0.35);
   padding: 1.75rem;
-  background: var(--birch);
 }
 
 .done h3 {
@@ -69,5 +83,5 @@
 }
 
 .done p {
-  color: var(--ink-2);
+  color: var(--muted-on-black);
 }

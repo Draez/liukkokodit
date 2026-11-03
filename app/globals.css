@@ -4,45 +4,25 @@
    ========================================================================== */
 
 :root {
-  --spruce: #1e3a2f;
-  --spruce-deep: #152a22;
-  --pine: #d9b98a;
-  --pine-soft: #ebd9bc;
-  --birch: #f1f2ee;
-  --paper: #fafaf8;
-  --ink: #1d2320;
-  --ink-2: #4a544f;
-  --line: #d5d9d3;
-  --hero-bg: var(--spruce);
-  --hero-ink: #f3f1ea;
-  --hero-muted: #b9c8bf;
-  --focus: #c48a3a;
+  /* Beige ja musta. Ei tummaa teemaa: brändi näyttää aina samalta. */
+  --paper: #efeae1;
+  --sand: #e4dbcc;
+  --wood: #d9bf8f;
+  --wood-soft: #e9dcc3;
+  --black: #161513;
+  --black-deep: #0c0b0a;
+  --on-black: #efeae1;
+  --ink: #161513;
+  --ink-2: #6b645a;
+  --line: #d3c9b8;
+  --muted-on-black: #b3aa9b;
+  --focus: #9a7a45;
 
-  --font-display: var(--font-bricolage), "Instrument Sans", system-ui, sans-serif;
-  --font-body: var(--font-instrument), system-ui, -apple-system, "Segoe UI",
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, -apple-system, "Segoe UI",
     Helvetica, Arial, sans-serif;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --birch: #141b18;
-    --paper: #0f1512;
-    --ink: #ecebe4;
-    --ink-2: #a8b3ac;
-    --line: #2b3630;
-    --hero-bg: #152a22;
-    --pine-soft: #3a3122;
-  }
-}
-
-:root[data-theme="dark"] {
-  --birch: #141b18;
-  --paper: #0f1512;
-  --ink: #ecebe4;
-  --ink-2: #a8b3ac;
-  --line: #2b3630;
-  --hero-bg: #152a22;
-  --pine-soft: #3a3122;
+  color-scheme: light;
 }
 
 /* --- reset / base ------------------------------------------------------- */
@@ -53,6 +33,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Tahmea navi (76px) ei peitä ankkurilla vieritetyn osion alkua. */
+  scroll-padding-top: 76px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -75,21 +57,21 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
   margin: 0;
 }
 
 h2 {
-  font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+  font-size: clamp(2rem, 3.8vw, 3rem);
   font-variation-settings: "opsz" 72;
 }
 
 h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 1.35rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
 }
 
 p {
@@ -114,19 +96,25 @@ svg {
 }
 
 section {
-  padding: 5.5rem 0;
+  padding: 7rem 0;
+}
+
+@media (max-width: 760px) {
+  section {
+    padding: 4.5rem 0;
+  }
 }
 
 /* --- layout utilities --------------------------------------------------- */
 
 .wrap {
-  width: min(1120px, calc(100% - 2.5rem));
+  width: min(1200px, calc(100% - 2.5rem));
   margin-inline: auto;
 }
 
 .sec-head {
   max-width: 38ch;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .sec-head p {
@@ -135,51 +123,32 @@ section {
   font-size: 1.1rem;
 }
 
-/* --- buttons ------------------------------------------------------------ */
+/* --- buttons ------------------------------------------------------------
+   Nooa-henkinen tekstipainike: ei taustaa eikä laatikkoa, vain ohut
+   alleviivaus joka paksunee hoverissa. Väri periytyy osiosta, joten sama
+   painike toimii beigellä ja mustalla pohjalla. */
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.8rem 1.25rem;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
+  padding: 0.35rem 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
   font-size: 1rem;
-  border: 1.5px solid transparent;
+  letter-spacing: 0.01em;
+  text-decoration: none;
   cursor: pointer;
-  font-family: inherit;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition: box-shadow 0.15s, opacity 0.15s;
 }
 
-.btn-pine {
-  background: var(--pine);
-  color: var(--spruce-deep);
-  border-color: var(--pine);
-}
-
-.btn-pine:hover {
-  background: #e3c79e;
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--hero-ink);
-  border-color: rgba(243, 241, 234, 0.4);
-}
-
-.btn-ghost:hover {
-  border-color: var(--hero-ink);
-}
-
-.btn-spruce {
-  background: var(--spruce);
-  color: #f3f1ea;
-  border-color: var(--spruce);
-}
-
-.btn-spruce:hover {
-  background: var(--spruce-deep);
+.btn:hover {
+  box-shadow: inset 0 -1px 0 currentColor;
 }
 
 .btn[disabled] {
@@ -190,7 +159,8 @@ section {
 /* --- placeholders for business data that is not in yet ------------------ */
 
 .todo {
-  background: var(--pine-soft);
+  background: var(--wood-soft);
+  color: var(--ink);
   border-radius: 3px;
   padding: 0 0.3em;
 }
@@ -202,10 +172,9 @@ section {
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: var(--pine);
-  color: var(--spruce-deep);
+  background: var(--black);
+  color: var(--on-black);
   padding: 0.75rem 1.25rem;
-  border-radius: 0 0 6px 0;
   font-weight: 600;
   text-decoration: none;
 }
