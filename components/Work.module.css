@@ -17,23 +17,8 @@
   grid-template-columns: 1fr 2fr;
 }
 
-.work:nth-child(even) .photo,
-.work:nth-child(even) .ph {
+.work:nth-child(even) .photo {
   order: 2;
-}
-
-/* Viivoitettu paikanvaraaja niin kauan kuin oikeaa kuvaa ei ole. */
-.ph {
-  aspect-ratio: 3 / 2;
-  background: repeating-linear-gradient(
-    135deg,
-    transparent 0 14px,
-    var(--line) 14px 15px
-  );
-  display: grid;
-  place-items: center;
-  color: var(--ink-2);
-  font-size: 0.9rem;
 }
 
 .photo {
@@ -57,9 +42,10 @@
   padding-bottom: 0.5rem;
 }
 
-.num {
+.place {
   font-size: 0.8rem;
   letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--ink-2);
   margin-bottom: 1rem;
 }
@@ -68,7 +54,7 @@
   font-size: clamp(1.6rem, 2.4vw, 2.1rem);
 }
 
-.body p:not(.num) {
+.body p:not(.place) {
   color: var(--ink-2);
   font-size: 0.98rem;
   margin-top: 0.75rem;
@@ -86,16 +72,11 @@
     gap: 1.25rem;
   }
 
-  .work:nth-child(even) .photo,
-  .work:nth-child(even) .ph {
+  .work:nth-child(even) .photo {
     order: 0;
   }
 
   .photo {
-    margin-inline: -1.25rem;
-  }
-
-  .ph {
     margin-inline: -1.25rem;
   }
 }

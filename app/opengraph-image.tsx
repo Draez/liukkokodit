@@ -3,10 +3,11 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { logoDataUri } from "@/components/Logo";
 import { stacked } from "@/components/logo-paths";
+import { site } from "@/content/site";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Liukko Kodit Oy – rakennusliike Tuusulassa";
+export const alt = "Liukko Kodit – valmiit omakoti- ja paritalot";
 
 // Pystylogon kuvasuhde viewBoxista, jotta kuva ei veny.
 const [, , vbW, vbH] = stacked.viewBox.split(" ").map(Number);
@@ -37,10 +38,10 @@ export default async function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 36, width: 660 }}>
           <div style={{ display: "flex", fontSize: 76, lineHeight: 1.08, letterSpacing: -1.5 }}>
-            Talosi rakentaa sama mies alusta loppuun.
+            {site.hero.title}
           </div>
           <div style={{ display: "flex", fontSize: 28, color: "#6B645A" }}>
-            Tuusula ja Keski-Uusimaa
+            {site.hero.areaStrong}
           </div>
         </div>
       </div>

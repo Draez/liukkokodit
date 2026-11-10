@@ -22,175 +22,201 @@ export const site = {
   businessId: null as string | Todo,
 
   // Ankkurit ovat /-alkuisia, jotta ne toimivat myös alasivuilta
-  // (/tyonaytteet/[id]); etusivulla /#palvelut vierittää aivan kuten #palvelut.
+  // (/referenssit/[id]); etusivulla /#yritys vierittää aivan kuten #yritys.
+  // Etusivu-linkkiä ei tarvita: logo vie sivun alkuun.
   nav: [
-    { href: "/#palvelut", label: "Palvelut" },
-    { href: "/#prosessi", label: "Näin työ etenee" },
-    { href: "/#tyot", label: "Työnäytteet" },
-    { href: "/#alue", label: "Toiminta-alue" },
+    { href: "/#yritys", label: "Yritys" },
+    { href: "/#referenssit", label: "Referenssit" },
+    { href: "/#yhteys", label: "Yhteys" },
   ],
 
   hero: {
-    title: "Talosi rakentaa sama mies alusta loppuun.",
-    lede: "Liukko Kodit on yhden rakentajan rakennusliike Tuusulassa. Sovit työstä suoraan tekijän kanssa – ja hän on se, joka seisoo tontillasi joka aamu.",
-    area: "Omakotitalot, laajennukset ja piharakennukset",
-    areaStrong: "Tuusula ja Keski-Uusimaa",
+    title: "Rakennamme enemmän kuin koteja.",
+    lede: "Liukko Kodit suunnittelee ja rakentaa valmiita omakoti- ja paritaloja pääkaupunkiseudulle ja Keski-Uudellemaalle. Hoidamme kaiken tontin hankinnasta muuttovalmiiseen kotiin – sinä saat uuden kodin ilman rakentamisen vaivaa.",
+    primaryCta: "Katso referenssit",
+    secondaryCta: "Kysy tulevista kohteista",
+    area: "Omakoti- ja paritalot",
+    areaStrong: "Pääkaupunkiseutu ja Keski-Uusimaa",
     image: "/hero-olohuone.jpg",
     imageAlt: "Valoisa olohuone ja keittiö valmiissa paritalossa",
   },
 
-  why: {
-    title: "Miksi yhden miehen rakennusliike?",
-    lede: "Suuressa firmassa myyjä myy, työnjohtaja johtaa ja kirvesmies rakentaa. Täällä kaikki kolme ovat sama henkilö.",
-    items: [
-      {
-        title: "Sama tekijä joka päivä",
-        body: "Tontilla ei vaihdu porukka viikoittain. Rakentaja tuntee talosi jokaisen liitoksen, koska hän on tehnyt ne itse.",
-      },
-      {
-        title: "Suora keskustelu",
-        body: 'Kysymys tai muutostoive hoituu yhdellä puhelulla. Ei välikäsiä, ei vastausta "kysyn työmaalta".',
-      },
-      {
-        title: "Vastuu yhdessä nimessä",
-        body: "Tarjous, aikataulu ja laatu ovat yhden ihmisen lupauksia. Se näkyy siinä, miten työ tehdään.",
-      },
+  about: {
+    title: "Valmis koti – ja koko vastuu meillä",
+    paragraphs: [
+      "Liukko Kodit toteuttaa omia asuntohankkeitaan. Etsimme tontit hyviltä ja halutuilta sijainneilta ja suunnittelemme niihin yhdessä arkkitehdin kanssa kodit, joissa tontin mahdollisuudet on hyödynnetty parhaalla tavalla. Myymme kodit suoraan asukkaille – valmiina tai jo rakennusvaiheessa.",
+      "Kannamme kokonaisvastuun hankkeesta tontin ostosta luovutukseen. Siksi voimme luvata, että kohde etenee sovitussa aikataulussa ja suunnitelmien mukaan.",
     ],
-  },
-
-  services: {
-    title: "Palvelut",
-    lede: "Pientalorakentamista suunnittelusta luovutukseen. Tarvittaessa luotettavat aliurakoitsijat LVI- ja sähkötöihin.",
+    /** Jokaisella kohdalla pystykuva; kuva ja teksti vuorottelevat puolta. */
     items: [
       {
-        title: "Omakotitalot",
-        body: "Puurunkoiset omakotitalot omalle tontille valmiiden tai räätälöityjen suunnitelmien pohjalta. Perustuksista vesikattoon ja sisävalmiiksi tai sovittuun valmiusasteeseen.",
+        title: "Ilman rakentamisen vaivaa",
+        body: "Sinun ei tarvitse kilpailuttaa urakoitsijoita, valvoa työmaata tai murehtia aikatauluista. Voit keskittyä omaan arkeesi – me hoidamme loput.",
+        image: "/koti/makuuhuone.jpg",
+        alt: "Rauhallinen makuuhuone, jossa puurimoitettu seinä",
       },
       {
-        title: "Laajennukset ja peruskorjaukset",
-        body: "Lisähuone, toinen kerros tai koko talon remontti. Vanhaan rakenteeseen liittyminen vaatii tarkkuutta – siitä sovitaan tarkasti ennen kuin ensimmäistä seinää avataan.",
+        title: "Pääset vaikuttamaan",
+        body: "Kun tulet mukaan hankkeeseen ajoissa, valitset kotisi pintamateriaalit, värit, keittiökalusteet, laatat ja lattiat omien toiveidesi mukaan.",
+        image: "/koti/kylpyhuone.jpg",
+        alt: "Kylpyhuone, jossa puinen allaskaappi ja kivinen pesuallas",
       },
       {
-        title: "Autotallit, saunat ja piharakennukset",
-        body: "Autotallit, varastot, pihasaunat ja grillikatokset. Usein sellaisia töitä, joihin isot firmat eivät ehdi – tänne ne mahtuvat.",
-      },
-      {
-        title: "Terassit ja julkisivut",
-        body: "Terassit, julkisivuverhoukset ja ikkunoiden vaihdot. Työt, jotka näkyvät päivittäin ja joissa siisti jälki ratkaisee.",
+        title: "Tutut tekijät",
+        body: "Rakennamme vuosia yhdessä toimineiden aliurakoitsijoiden, suunnittelijoiden, valvojien ja toimittajien kanssa. Työ etenee sujuvasti, jälki on laadukasta ja aikataulu pitää.",
+        image: "/koti/keittio.jpg",
+        alt: "Keittiö, jossa valkoiset ja puupintaiset kaapit",
       },
     ],
   },
 
   process: {
-    title: "Näin työ etenee",
-    lede: "Neljä vaihetta, ei yllätyksiä. Aikataulu ja hinta lyödään lukkoon ennen kuin työ alkaa.",
+    title: "Näin hanke etenee",
+    lede: "Tontin ostosta muuttopäivään kuluu keskimäärin noin vuosi.",
     steps: [
       {
-        title: "Tapaaminen tontilla",
-        body: "Käydään paikan päällä läpi, mitä haluat ja mitä tontti sallii. Maksuton, ei sitoumuksia.",
+        title: "Tontti",
+        body: "Etsimme jatkuvasti tontteja hyviltä sijainneilta pääkaupunkiseudulla ja Keski-Uudellamaalla.",
       },
       {
-        title: "Suunnitelma ja tarjous",
-        body: "Saat kirjallisen tarjouksen, jossa on eritelty työt, materiaalit ja aikataulu. Rakennuslupa-asioissa autetaan.",
+        title: "Suunnittelu",
+        body: "Suunnittelemme kohteen arkkitehdin kanssa niin, että tontista saadaan paras mahdollinen hyöty asumiseen.",
+      },
+      {
+        title: "Lupa ja ennakkomarkkinointi",
+        body: "Käynnistämme rakennuslupaprosessin ja usein myös ennakkomarkkinoinnin. Tässä vaiheessa ostaja voi tulla mukaan.",
       },
       {
         title: "Rakentaminen",
-        body: "Työ etenee sovitussa järjestyksessä ja kuulet, mitä tapahtuu seuraavaksi. Muutokset sovitaan kirjallisesti.",
+        body: "Työt alkavat luvan saavuttua. Ennakkoon ostanut asukas valitsee pinnat, värit ja kalusteet omien toiveidensa mukaan.",
       },
       {
-        title: "Luovutus ja takuu",
-        body: "Käydään valmis työ yhdessä läpi. Takuu ja vastuuvakuutus kuuluvat jokaiseen urakkaan.",
+        title: "Muuttovalmis koti",
+        body: "Luovutamme kodin valmiina ja viimeisteltynä. Sinä muutat sisään.",
+      },
+    ],
+  },
+
+  /** Leveä tunnelmakuva ja teksti prosessin jälkeen. */
+  ready: {
+    image: "/referenssit/kerava-paritalo/05.jpg",
+    alt: "Puupaneloitu sauna epäsuoralla valaistuksella",
+    body: "Vaikka et ehtisi mukaan suunnitteluun, koti on mietitty valmiiksi: tilat, keittiöt ja kylpyhuoneet ovat toimivia, ja pinnoissa on ajattomia, maanläheisiä sävyjä. Kauniita, laadukkaita ja nykyaikaisia koteja mahdollisimman monen makuun.",
+  },
+
+  values: {
+    title: "Pidämme kiinni siitä, mitä lupaamme",
+    image: "/koti/takka.jpg",
+    alt: "Seinään upotettu varaava takka ja halkoteline",
+    items: [
+      {
+        title: "Vastuullisuus",
+        body: "Vastaamme jokaisesta kohteesta itse, tontista viimeistelyyn.",
+      },
+      {
+        title: "Luotettavuus ja laatu",
+        body: "Hankkeemme valmistuvat ajallaan, eikä laadusta tingitä missään vaiheessa.",
+      },
+      {
+        title: "Avoimuus ja rehellisyys",
+        body: "Kerromme suoraan, miten hanke etenee, ja kuuntelemme asiakkaan toiveita ja ajatuksia.",
       },
     ],
   },
 
   work: {
-    title: "Työnäytteitä",
-    lede: "Valmiita kohteita Tuusulasta ja lähikunnista.",
-    /** Linkkiteksti kortista kohteen omalle sivulle /tyonaytteet/[id]. */
+    title: "Referenssit",
+    lede: "Laadukkaasti toteutettuja koteja ja rakennushankkeita. Tutustu työnjälkeemme ja tapaamme rakentaa.",
+    /** Linkkiteksti kortista kohteen omalle sivulle /referenssit/[id]. */
     more: "Katso kohde",
-    back: "Takaisin työnäytteisiin",
+    back: "Takaisin referensseihin",
     /**
-     * TODO: tarkista otsikot (`type`) ja täytä paikka ja tekstit.
+     * `id` on kohteen URL-osa (/referenssit/kerava-paritalo): pienet
+     * kirjaimet, numerot ja viivat. `facts` on kortin ja kohdesivun
+     * tietorivi, `details` kohdesivun kuvaus. `image` on etusivun kortin ja
+     * kohdesivun pääkuva, `gallery` kohdesivun muut kuvat. Kuvat ovat
+     * kansiossa /public/referenssit/[id]/.
      *
-     * `id` on kohteen URL-osa (/tyonaytteet/omakotitalo-tuusula): pienet
-     * kirjaimet, numerot ja viivat. `body` on kortin lyhyt teksti, `details`
-     * kohdesivun pidempi kuvaus. `image` on etusivun kortin ja kohdesivun
-     * pääkuva, `gallery` kohdesivun muut kuvat. Kuvat ovat kansiossa
-     * /public/tyonaytteet/[id]/.
+     * Katuosoitteita ei julkaista: kohteet ovat nyt asukkaiden koteja.
      */
     items: [
       {
-        id: "omakotitalo-1",
-        type: "Omakotitalo",
-        place: null as string | Todo,
-        body: null as string | Todo,
-        details: null as string | Todo,
-        image: "/tyonaytteet/omakotitalo-1/01.jpg" as string | Todo,
+        id: "jarvenpaa-omakotitalot",
+        title: "Kaksi omakotitaloa",
+        place: "Järvenpää",
+        facts: "122,5 m² / asunto · 5h + kt",
+        details:
+          "Kahden omakotitalon kokonaisuus Järvenpäähän. Kohteessa on laadukkaat materiaalit sekä huolella suunnitellut tilat ja yksityiskohdat. Korkea huonekorkeus ja suuret ikkunat tuovat koteihin valoa, avaruutta ja tilan tuntua.",
+        image: "/referenssit/jarvenpaa-omakotitalot/06.jpg",
         gallery: [
-          { src: "/tyonaytteet/omakotitalo-1/02.jpg", alt: "Talo ja terassi ylhäältä kuvattuna" },
-          { src: "/tyonaytteet/omakotitalo-1/03.jpg", alt: "Tummaksi verhottu talo pihan puolelta" },
-          { src: "/tyonaytteet/omakotitalo-1/04.jpg", alt: "Autotalli ja katos" },
-          { src: "/tyonaytteet/omakotitalo-1/05.jpg", alt: "Talo ja piha tien suunnasta" },
-          { src: "/tyonaytteet/omakotitalo-1/06.jpg", alt: "Talon julkisivu ja terassi" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/02.jpg", alt: "Vaalea talo ja terassi ylhäältä kuvattuna" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/03.jpg", alt: "Tummaksi verhottu talo pihan puolelta" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/04.jpg", alt: "Autotalli ja katos" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/05.jpg", alt: "Talo ja piha tien suunnasta" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/01.jpg", alt: "Vaalea talo, terassi ja lasiovet" },
         ],
       },
       {
-        id: "omakotitalo-2",
-        type: "Omakotitalo",
-        place: null as string | Todo,
-        body: null as string | Todo,
-        details: null as string | Todo,
-        image: "/tyonaytteet/omakotitalo-2/01.jpg" as string | Todo,
+        id: "kerava-paritalo",
+        title: "Paritalo",
+        place: "Kerava",
+        facts: "103,5 m² · 4h + kt",
+        details:
+          "Paritalokohde Keravalle, toteutettu laadukkain materiaalein. Kodin erityispiirteitä ovat osittain seinään upotettu varaava takka, lakattu betonilattia sekä tilava ja näyttävä kylpyhuone- ja saunaosasto.",
+        image: "/referenssit/kerava-paritalo/02.jpg",
         gallery: [
-          { src: "/tyonaytteet/omakotitalo-2/02.jpg", alt: "Avoin keittiö ja olohuone" },
-          { src: "/tyonaytteet/omakotitalo-2/03.jpg", alt: "Makuuhuone" },
-          { src: "/tyonaytteet/omakotitalo-2/04.jpg", alt: "Katettu terassi" },
-          { src: "/tyonaytteet/omakotitalo-2/05.jpg", alt: "Sauna" },
-          { src: "/tyonaytteet/omakotitalo-2/06.jpg", alt: "Kylpyhuone ja saunan lasiseinä" },
+          { src: "/referenssit/kerava-paritalo/01.jpg", alt: "Talo ja pergolalla katettu terassi" },
+          { src: "/referenssit/kerava-paritalo/03.jpg", alt: "Makuuhuone" },
+          { src: "/referenssit/kerava-paritalo/04.jpg", alt: "Katettu terassi" },
+          { src: "/referenssit/kerava-paritalo/05.jpg", alt: "Sauna" },
+          { src: "/referenssit/kerava-paritalo/06.jpg", alt: "Kylpyhuone ja saunan lasiseinä" },
         ],
       },
       {
-        id: "paritalo",
-        type: "Paritalo",
-        place: null as string | Todo,
-        body: null as string | Todo,
-        details: null as string | Todo,
-        image: "/tyonaytteet/paritalo/01.jpg" as string | Todo,
+        id: "jarvenpaa-paritalot",
+        title: "Kaksi paritaloa",
+        place: "Järvenpää",
+        facts: "77 m² / asunto",
+        details:
+          "Kahden paritalon hanke Järvenpäähän. Kompaktissakin kodissa kolmen metrin huonekorkeus tuo mukavasti tilan tuntua, ja jokaisella asunnolla on oma yksityinen piha-alue.",
+        image: "/referenssit/jarvenpaa-paritalot/01.jpg",
         gallery: [
-          { src: "/tyonaytteet/paritalo/02.jpg", alt: "Terassi ja nurmipiha" },
-          { src: "/tyonaytteet/paritalo/03.jpg", alt: "Keittiö ja ruokapöytä" },
-          { src: "/tyonaytteet/paritalo/04.jpg", alt: "Olohuone ja keittiö" },
-          { src: "/tyonaytteet/paritalo/05.jpg", alt: "Sisäänkäynnit ja autokatos" },
-          { src: "/tyonaytteet/paritalo/06.jpg", alt: "Makuuhuone" },
+          { src: "/referenssit/jarvenpaa-paritalot/04.jpg", alt: "Olohuone ja keittiö" },
+          { src: "/referenssit/jarvenpaa-paritalot/03.jpg", alt: "Keittiö ja ruokapöytä" },
+          { src: "/referenssit/jarvenpaa-paritalot/02.jpg", alt: "Terassi ja nurmipiha" },
+          { src: "/referenssit/jarvenpaa-paritalot/05.jpg", alt: "Sisäänkäynnit ja autokatos" },
+          { src: "/referenssit/jarvenpaa-paritalot/06.jpg", alt: "Makuuhuone" },
         ],
       },
     ],
   },
 
   areas: {
-    title: "Toiminta-alue",
-    /** Ensimmäinen on kotipaikka ja korostetaan. */
+    title: "Missä rakennamme",
+    /** Alueet, joilta etsitään tontteja. */
     municipalities: [
+      "Helsinki",
+      "Espoo",
+      "Kauniainen",
+      "Vantaa",
       "Tuusula",
       "Järvenpää",
       "Kerava",
-      "Nurmijärvi",
-      "Hyvinkää",
-      "Mäntsälä",
       "Sipoo",
-      "Vantaa",
+      "Nurmijärvi",
+      "Klaukkala",
     ],
-    note: "Kotipaikka Tuusula. Työmaat noin 40 kilometrin säteellä – tarpeeksi lähellä, että tontilla ollaan joka aamu ajoissa.",
-    asideTitle: "Ota yhteyttä ajoissa",
-    asideBody:
-      "Yhden rakentajan kalenteri täyttyy kausi kerrallaan. Keväällä alkava rakennus kannattaa sopia jo syksyllä, niin lupa-asiat ehditään hoitaa rauhassa.",
-    asideCta: "Kysy vapaita aikoja",
+    note: "Etsimme jatkuvasti uusia tontteja näiltä alueilta.",
+    asideTitle: "Myytkö tonttia?",
+    asideBody: "Kuulemme mielellämme tonteista, joille voisi rakentaa omakoti- tai paritaloja.",
+    asideCta: "Ota yhteyttä",
   },
 
   contact: {
-    title: "Pyydä tarjous",
-    lede: "Kerro lyhyesti, mitä olet rakentamassa ja missä. Vastaus yleensä seuraavana arkipäivänä.",
+    title: "Ota yhteyttä",
+    lede: "Kysy käynnissä olevista ja tulevista kohteistamme – kerromme mielellämme lisää. Myös ideoita ja ehdotuksia saa aina esittää.",
+    /** TODO: yrittäjän kuva (pystykuva), esim. "/koti/yrittaja.jpg" */
+    image: null as string | Todo,
   },
 } as const;
 

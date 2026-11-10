@@ -36,18 +36,13 @@ kansiossa `public/`), viivoitettu paikanvaraaja vaihtuu automaattisesti
 `next/image`-komponenttiin.
 
 Kun `phone` on täytetty, naviin ilmestyy kapealla näytöllä soittopainike ja
-heron "Soita"-painike muuttuu toimivaksi `tel:`-linkiksi.
+yhteystieto-osion numero muuttuu toimivaksi `tel:`-linkiksi. Sivustolla ei
+ole lomaketta: yhteydenotot tulevat suoraan puhelimella tai sähköpostilla.
 
 ## Ympäristömuuttujat
 
-Katso `.env.example`. Lomake tarvitsee:
+Katso `.env.example`.
 
-- `RESEND_API_KEY` — https://resend.com/api-keys
-- `CONTACT_TO_EMAIL` — osoite johon tarjouspyynnöt ohjataan
-- `RESEND_FROM` — lähettäjä, vaatii Resendissä varmennetun domainin.
-  Ennen `liukkokodit.fi`-domainin varmennusta testaukseen käy
-  `onboarding@resend.dev`, joka lähettää vain Resend-tilin omaan
-  sähköpostiin.
 - `NEXT_PUBLIC_SITE_URL` — vasta kun oma domain on käytössä. Vercelillä
   osoite päätellään muuten automaattisesti. **Niin kauan kuin tämä on
   asettamatta, sivusto on piilossa hakukoneilta**: robots.txt kieltää
@@ -55,15 +50,12 @@ Katso `.env.example`. Lomake tarvitsee:
   Googleen, ja sivusto avautuu hakukoneille samalla kun domain otetaan
   käyttöön.
 
-Lomake epäonnistuu turvallisesti: jos avaimet puuttuvat tai Resend palauttaa
-virheen, käyttäjälle näytetään puhelinnumero eikä lomake jää umpikujaan.
-
 ## Julkaisu Vercelille
 
 1. Pushaa repo GitHubiin ja tuo projekti Verceliin (framework tunnistuu
    automaattisesti, buildkomento `pnpm build`).
-2. Lisää ympäristömuuttujat projektin asetuksiin (Production + Preview).
-3. Liitä domain `liukkokodit.fi` ja aseta `NEXT_PUBLIC_SITE_URL`.
+2. Liitä domain `liukkokodit.fi` ja aseta `NEXT_PUBLIC_SITE_URL`
+   projektin asetuksiin.
 
 ## Rakenne
 
@@ -72,7 +64,6 @@ app/
   layout.tsx           fontit, metadata, JSON-LD
   page.tsx             osioiden kokoonpano
   globals.css          design tokenit, teema, jaetut apuluokat
-  actions/sendQuote.ts lomakkeen server action (zod + Resend)
   icon.tsx             favicon
   opengraph-image.tsx  jakokuva
   robots.ts sitemap.ts

@@ -1,8 +1,9 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
-import { Why } from "@/components/Why";
-import { Services } from "@/components/Services";
+import { About } from "@/components/About";
 import { Process } from "@/components/Process";
+import { Ready } from "@/components/Ready";
+import { Values } from "@/components/Values";
 import { Work } from "@/components/Work";
 import { Areas } from "@/components/Areas";
 import { Contact } from "@/components/Contact";
@@ -14,9 +15,10 @@ export default function Home() {
       <Nav />
       <main id="sisalto">
         <Hero />
-        <Why />
-        <Services />
+        <About />
         <Process />
+        <Ready />
+        <Values />
         <Work />
         <Areas />
         <Contact />

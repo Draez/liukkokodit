@@ -1,0 +1,26 @@
+.photo {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+.body {
+  max-width: 44ch;
+  margin: 3rem auto 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  line-height: 1.4;
+}
+
+@media (max-width: 760px) {
+  .photo {
+    aspect-ratio: 4 / 3;
+    margin-inline: -1.25rem;
+  }
+}

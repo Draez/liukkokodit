@@ -1,10 +1,12 @@
+import Image from "next/image";
 import { site, telHref } from "@/content/site";
 import { Fade } from "./Fade";
-import { QuoteForm } from "./QuoteForm";
 import { Reveal } from "./Reveal";
 import { Todo } from "./Todo";
 import styles from "./Contact.module.css";
 
+/** Yhteystiedot ja yrittäjän kuva. Ei lomaketta: asiakas toivoi suoraa
+    yhteydenottoa puhelimella tai sähköpostilla. */
 export function Contact() {
   return (
     <Reveal className={styles.contact} id="yhteys">
@@ -40,17 +42,25 @@ export function Contact() {
             <dt>Yrittäjä</dt>
             <dd>{site.owner ?? <Todo>etunimi sukunimi</Todo>}</dd>
 
-            <dt>Osoite</dt>
-            <dd>{site.city}</dd>
-
             <dt>Y-tunnus</dt>
             <dd>{site.businessId ?? <Todo>0000000-0</Todo>}</dd>
           </Fade>
         </div>
 
-        <Fade i={3}>
-          <QuoteForm />
-        </Fade>
+        {site.contact.image ? (
+          <Fade i={3} className={styles.photo}>
+            <Image
+              src={site.contact.image}
+              alt={site.owner ?? site.brand}
+              fill
+              sizes="(max-width: 760px) 100vw, 420px"
+            />
+          </Fade>
+        ) : (
+          <Fade i={3} className={`${styles.photo} ${styles.ph}`}>
+            <Todo>yrittäjän kuva</Todo>
+          </Fade>
+        )}
       </div>
     </Reveal>
   );

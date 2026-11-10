@@ -5,11 +5,10 @@ import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { Fade } from "@/components/Fade";
-import { Todo, Value } from "@/components/Todo";
 import { findWork, site } from "@/content/site";
 import styles from "./page.module.css";
 
-type Props = PageProps<"/tyonaytteet/[id]">;
+type Props = PageProps<"/referenssit/[id]">;
 
 /** Kohteet ovat sisältötiedostossa, joten kaikki sivut voidaan esirenderöidä. */
 export function generateStaticParams() {
@@ -21,15 +20,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = findWork(id);
   if (!item) return {};
 
-  const title = `${item.type}, ${item.place ?? site.city} – ${site.company}`;
-  const description =
-    item.body ?? `${item.type} ${site.city}n alueella. Työnäyte, ${site.company}.`;
+  const title = `${item.title}, ${item.place} – ${site.company}`;
+  const description = item.details;
 
   return {
     title,
     description,
-    alternates: { canonical: `/tyonaytteet/${item.id}` },
-    openGraph: { title, description, url: `/tyonaytteet/${item.id}` },
+    alternates: { canonical: `/referenssit/${item.id}` },
+    openGraph: { title, description, url: `/referenssit/${item.id}` },
   };
 }
 
@@ -45,41 +43,29 @@ export default async function WorkPage({ params }: Props) {
         <article className={`${styles.article} on-load`}>
           <div className="wrap">
             <Fade as="p" i={0} className={styles.crumb}>
-              <Link href="/#tyot">← {site.work.back}</Link>
+              <Link href="/#referenssit">← {site.work.back}</Link>
             </Fade>
 
             <Fade as="h1" i={1} className={styles.title}>
-              {item.type}, <Value value={item.place} placeholder="paikka" />
+              {item.title}, {item.place}
             </Fade>
 
             <Fade as="p" i={2} className={styles.lede}>
-              <Value
-                value={item.body}
-                placeholder="Lyhyt kuvaus: koko m², rakennusaika, erityispiirre."
+              {item.facts}
+            </Fade>
+
+            <Fade i={3} className={styles.photo}>
+              <Image
+                src={item.image}
+                alt={`${item.title}, ${item.place}`}
+                fill
+                sizes="(max-width: 1120px) 100vw, 1120px"
+                priority
               />
             </Fade>
 
-            {item.image ? (
-              <Fade i={3} className={styles.photo}>
-                <Image
-                  src={item.image}
-                  alt={`${item.type}, ${item.place ?? site.city}`}
-                  fill
-                  sizes="(max-width: 1120px) 100vw, 1120px"
-                  priority
-                />
-              </Fade>
-            ) : (
-              <Fade i={3} className={styles.ph}>
-                <Todo>kuva</Todo>
-              </Fade>
-            )}
-
             <Fade as="div" i={4} className={styles.details}>
-              <Value
-                value={item.details}
-                placeholder="Pidempi kuvaus kohteesta: lähtötilanne, mitä tehtiin, materiaalit, aikataulu ja mitä asiakas piti tärkeänä."
-              />
+              {item.details}
             </Fade>
 
             {item.gallery.length > 0 && (
@@ -104,7 +90,7 @@ export default async function WorkPage({ params }: Props) {
 
             <Fade i={5} className={styles.cta}>
               <Link className="btn" href="/#yhteys">
-                Pyydä tarjous vastaavasta
+                Kysy tulevista kohteista
               </Link>
             </Fade>
           </div>

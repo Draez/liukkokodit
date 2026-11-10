@@ -30,32 +30,15 @@
   max-width: 46ch;
 }
 
-.photo,
-.ph {
+.photo {
+  position: relative;
   margin-top: 2.5rem;
   aspect-ratio: 16 / 10;
   overflow: hidden;
 }
 
-.photo {
-  position: relative;
-}
-
 .photo img {
   object-fit: cover;
-}
-
-/* Sama viivoitettu paikanvaraaja kuin etusivun kortissa. */
-.ph {
-  background: repeating-linear-gradient(
-    135deg,
-    transparent 0 14px,
-    var(--line) 14px 15px
-  );
-  display: grid;
-  place-items: center;
-  color: var(--ink-2);
-  font-size: 0.9rem;
 }
 
 .details {

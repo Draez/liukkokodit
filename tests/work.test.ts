@@ -22,8 +22,12 @@ describe("työnäytteet", () => {
   it("jokainen kohteen ja etusivun kuva löytyy public-kansiosta", () => {
     const paths = [
       site.hero.image,
+      site.ready.image,
+      site.values.image,
+      ...(site.contact.image ? [site.contact.image] : []),
+      ...site.about.items.map((item) => item.image),
       ...site.work.items.flatMap((item) => [
-        ...(item.image ? [item.image] : []),
+        item.image,
         ...item.gallery.map((photo) => photo.src),
       ]),
     ];

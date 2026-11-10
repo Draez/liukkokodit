@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { site, telHref } from "@/content/site";
+import { site } from "@/content/site";
 import { Fade } from "./Fade";
-import { Todo } from "./Todo";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -29,18 +28,12 @@ export function Hero() {
           </Fade>
 
           <Fade i={3} className={styles.cta}>
-            <a className="btn" href="#yhteys">
-              Pyydä tarjous
+            <a className="btn" href="#referenssit">
+              {site.hero.primaryCta}
             </a>
-            {telHref ? (
-              <a className="btn" href={telHref}>
-                Soita {site.phone}
-              </a>
-            ) : (
-              <span className="btn">
-                Soita <Todo>puhelinnumero</Todo>
-              </span>
-            )}
+            <a className="btn" href="#yhteys">
+              {site.hero.secondaryCta}
+            </a>
           </Fade>
 
           <Fade as="p" i={4} className={styles.area}>

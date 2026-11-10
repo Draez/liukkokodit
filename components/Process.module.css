@@ -9,7 +9,7 @@
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 2rem;
   counter-reset: step;
 }
@@ -35,6 +35,8 @@
 
 .step h3 {
   margin-bottom: 0.5rem;
+  /* "ennakkomarkkinointi" ei muuten mahdu viidennekseen. */
+  hyphens: auto;
 }
 
 .step p {
@@ -42,7 +44,7 @@
   font-size: 1rem;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   .steps {
     grid-template-columns: 1fr 1fr;
   }

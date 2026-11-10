@@ -1,4 +1,4 @@
-/* Musta lomakeosio (Nooa: tumma yhteydenottolomake). */
+/* Musta yhteystieto-osio: tiedot vasemmalla, yrittäjän pystykuva oikealla. */
 .contact {
   background: var(--black);
   color: var(--on-black);
@@ -6,22 +6,24 @@
 
 .contact :global(.wrap) {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  gap: 5rem;
+  align-items: center;
 }
 
 .lede {
   margin-top: 1rem;
   color: var(--muted-on-black);
   max-width: 40ch;
+  font-size: 1.1rem;
 }
 
 .details {
-  margin: 2rem 0 0;
+  margin: 3rem 0 0;
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 0.6rem 1.5rem;
+  gap: 0.9rem 2rem;
+  font-size: 1.1rem;
 }
 
 .details dt {
@@ -30,17 +32,37 @@
 
 .details dd {
   margin: 0;
-  font-weight: 500;
 }
 
 .details dd a {
   text-decoration: none;
-  border-bottom: 1px solid var(--wood);
+  border-bottom: 1px solid currentColor;
+}
+
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.photo img {
+  object-fit: cover;
+}
+
+/* Viivoitettu paikanvaraaja kunnes kuva on toimitettu. */
+.ph {
+  display: grid;
+  place-items: center;
+  background: repeating-linear-gradient(
+    135deg,
+    transparent 0 14px,
+    rgba(239, 234, 225, 0.15) 14px 15px
+  );
 }
 
 @media (max-width: 760px) {
   .contact :global(.wrap) {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
   }
 }

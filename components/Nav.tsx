@@ -25,9 +25,9 @@ export function Nav() {
               Soita
             </a>
           )}
-          <a className="btn" href="#yhteys">
-            Pyydä tarjous
-          </a>
+          <Link className="btn" href="/#yhteys">
+            Ota yhteyttä
+          </Link>
         </div>
       </div>
     </nav>

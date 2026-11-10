@@ -13,9 +13,7 @@ export function Areas() {
           </Fade>
           <Fade as="ul" i={1} className={styles.chips}>
             {site.areas.municipalities.map((name) => (
-              <li key={name} className={name === site.city ? styles.home : undefined}>
-                {name}
-              </li>
+              <li key={name}>{name}</li>
             ))}
           </Fade>
           <Fade as="p" i={2} className={styles.note}>

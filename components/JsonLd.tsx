@@ -1,9 +1,8 @@
 import { site } from "@/content/site";
 
 /**
- * LocalBusiness-rakenteinen data. Tämä on se osa, jonka varassa yritys
- * löytyy hauilla kuten "rakennusliike Tuusula" — areaServed kattaa koko
- * toiminta-alueen, ei pelkkää kotipaikkaa.
+ * LocalBusiness-rakenteinen data. areaServed kattaa kaikki alueet, joilta
+ * tontteja etsitään, ei pelkkää kotipaikkaa.
  */
 export function JsonLd({ baseUrl }: { baseUrl: string }) {
   const data = {
@@ -14,7 +13,7 @@ export function JsonLd({ baseUrl }: { baseUrl: string }) {
     alternateName: site.brand,
     url: baseUrl,
     description:
-      "Yhden rakentajan rakennusliike Tuusulassa. Omakotitalot, laajennukset, peruskorjaukset ja piharakennukset suunnittelusta luovutukseen.",
+      "Liukko Kodit suunnittelee ja rakentaa valmiita omakoti- ja paritaloja pääkaupunkiseudulle ja Keski-Uudellemaalle tontin hankinnasta muuttovalmiiseen kotiin.",
     address: {
       "@type": "PostalAddress",
       addressLocality: site.city,
@@ -32,10 +31,6 @@ export function JsonLd({ baseUrl }: { baseUrl: string }) {
     ...(site.owner
       ? { founder: { "@type": "Person", name: site.owner } }
       : {}),
-    makesOffer: site.services.items.map((item) => ({
-      "@type": "Offer",
-      itemOffered: { "@type": "Service", name: item.title },
-    })),
   };
 
   return (

@@ -25,11 +25,6 @@
   font-size: 0.95rem;
 }
 
-.chips li.home {
-  background: var(--black);
-  color: var(--on-black);
-}
-
 .note {
   color: var(--ink-2);
   margin-top: 1.5rem;

@@ -18,9 +18,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const title = "Liukko Kodit Oy – rakennusliike Tuusulassa";
+const title = "Liukko Kodit – valmiit omakoti- ja paritalot";
 const description =
-  "Yhden rakentajan rakennusliike Tuusulassa. Omakotitalot, laajennukset ja piharakennukset suunnittelusta luovutukseen – Tuusula, Järvenpää, Kerava ja muu Keski-Uusimaa.";
+  "Liukko Kodit suunnittelee ja rakentaa valmiita omakoti- ja paritaloja pääkaupunkiseudulle ja Keski-Uudellemaalle. Tontin hankinnasta muuttovalmiiseen kotiin, ilman rakentamisen vaivaa.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

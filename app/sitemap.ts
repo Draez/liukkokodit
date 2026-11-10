@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...site.work.items.map((item) => ({
-      url: `${siteUrl}/tyonaytteet/${item.id}`,
+      url: `${siteUrl}/referenssit/${item.id}`,
       lastModified,
       changeFrequency: "yearly" as const,
       priority: 0.6,

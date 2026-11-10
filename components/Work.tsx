@@ -4,48 +4,33 @@ import { site } from "@/content/site";
 import { Fade } from "./Fade";
 import { Reveal } from "./Reveal";
 import { SecHead } from "./SecHead";
-import { Todo, Value } from "./Todo";
 import styles from "./Work.module.css";
 
 export function Work() {
   return (
-    <Reveal id="tyot">
+    <Reveal id="referenssit">
       <div className="wrap">
         <SecHead title={site.work.title} lede={site.work.lede} />
         <div className={styles.grid}>
-          {site.work.items.map((item, i) => (
+          {site.work.items.map((item) => (
             <Fade key={item.id} as="article" className={styles.work} i={2}>
-              {item.image ? (
-                <div className={styles.photo}>
-                  <Image
-                    src={item.image}
-                    alt={`${item.type}, ${item.place ?? site.city}`}
-                    fill
-                    sizes="(max-width: 800px) 100vw, 800px"
-                    priority={false}
-                  />
-                </div>
-              ) : (
-                <div className={styles.ph}>
-                  <Todo>kuva {i + 1}</Todo>
-                </div>
-              )}
+              <div className={styles.photo}>
+                <Image
+                  src={item.image}
+                  alt={`${item.title}, ${item.place}`}
+                  fill
+                  sizes="(max-width: 800px) 100vw, 800px"
+                />
+              </div>
               <div className={styles.body}>
-                <p className={styles.num}>
-                  {String(i + 1).padStart(2, "0")} / {String(site.work.items.length).padStart(2, "0")}
-                </p>
+                <p className={styles.place}>{item.place}</p>
                 <h3>
                   {/* Koko kortti on klikattava (::after peittää artiklan). */}
-                  <Link className={styles.link} href={`/tyonaytteet/${item.id}`}>
-                    {item.type}, <Value value={item.place} placeholder="paikka" />
+                  <Link className={styles.link} href={`/referenssit/${item.id}`}>
+                    {item.title}
                   </Link>
                 </h3>
-                <p>
-                  <Value
-                    value={item.body}
-                    placeholder="Lyhyt kuvaus: koko m², rakennusaika, erityispiirre."
-                  />
-                </p>
+                <p>{item.facts}</p>
                 <span className={styles.more} aria-hidden="true">
                   {site.work.more} →
                 </span>
