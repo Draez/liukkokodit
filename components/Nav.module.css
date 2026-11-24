@@ -56,10 +56,105 @@
   font-size: 0.95rem;
 }
 
-/* Työpöydällä valikko riittää; kapealla näytöllä se piilotetaan ja tilalle
-   nostetaan soittopainike, jottei mobiilikävijälle jää pelkkää lomaketta. */
+/* Työpöydällä valikko riittää; kapealla näytöllä linkit siirtyvät
+   hampurilaisvalikon taakse ja tilalle nostetaan soittopainike. */
 .call {
   display: none;
+}
+
+.toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* Kolme viivaa: keskimmäinen on elementti itse, ylä- ja alaviiva pseudoja. */
+.bars,
+.bars::before,
+.bars::after {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.bars {
+  position: relative;
+}
+
+.bars::before,
+.bars::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.bars::before {
+  transform: translateY(-7px);
+}
+
+.bars::after {
+  transform: translateY(7px);
+}
+
+.bars[data-open="true"] {
+  background-color: transparent;
+}
+
+.bars[data-open="true"]::before {
+  transform: rotate(45deg);
+}
+
+.bars[data-open="true"]::after {
+  transform: rotate(-45deg);
+}
+
+.panel {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0 1.25rem;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel a {
+  display: block;
+  padding: 0.85rem 1.25rem; /* sama sivumarginaali kuin .wrap */
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+}
+
+.panel a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  text-decoration-thickness: 1px;
+}
+
+/* Paneelin "Ota yhteyttä" on painike, ei iso valikkolinkki. */
+.panel .panelCta {
+  padding: 1rem 1.25rem 0;
+}
+
+.panel .panelCta a {
+  display: inline-flex;
+  padding: 0.35rem 0;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 @media (max-width: 760px) {
@@ -67,7 +162,31 @@
     display: none;
   }
 
+  /* Mobiilissa "Ota yhteyttä" on hampurilaisvalikon sisällä. */
+  .contact {
+    display: none;
+  }
+
   .call {
     display: inline-flex;
+  }
+
+  .toggle {
+    display: inline-flex;
+  }
+}
+
+/* Leveällä näytöllä paneeli ei näy, vaikka se jäisi auki. */
+@media (min-width: 761px) {
+  .panel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bars,
+  .bars::before,
+  .bars::after {
+    transition: none;
   }
 }

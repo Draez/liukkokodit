@@ -37,7 +37,7 @@ export const site = {
     secondaryCta: "Kysy tulevista kohteista",
     area: "Omakoti- ja paritalot",
     areaStrong: "Pääkaupunkiseutu ja Keski-Uusimaa",
-    image: "/hero-olohuone.jpg",
+    image: "/hero-olohuone-keittio.jpg",
     imageAlt: "Valoisa olohuone ja keittiö valmiissa paritalossa",
   },
 
@@ -58,14 +58,14 @@ export const site = {
       {
         title: "Pääset vaikuttamaan",
         body: "Kun tulet mukaan hankkeeseen ajoissa, valitset kotisi pintamateriaalit, värit, keittiökalusteet, laatat ja lattiat omien toiveidesi mukaan.",
-        image: "/koti/kylpyhuone.jpg",
-        alt: "Kylpyhuone, jossa puinen allaskaappi ja kivinen pesuallas",
+        image: "/koti/kylpyhuone-vihrea.jpg",
+        alt: "Vihreäsävyinen laattaseinä, puinen allaskaappi ja kivinen pesuallas",
       },
       {
         title: "Tutut tekijät",
         body: "Rakennamme vuosia yhdessä toimineiden aliurakoitsijoiden, suunnittelijoiden, valvojien ja toimittajien kanssa. Työ etenee sujuvasti, jälki on laadukasta ja aikataulu pitää.",
-        image: "/koti/keittio.jpg",
-        alt: "Keittiö, jossa valkoiset ja puupintaiset kaapit",
+        image: "/koti/keittio-avohyllyt.jpg",
+        alt: "Puupintainen keittiö, jossa valaistut avohyllyt ja vaalea työtaso",
       },
     ],
   },
@@ -99,15 +99,15 @@ export const site = {
 
   /** Leveä tunnelmakuva ja teksti prosessin jälkeen. */
   ready: {
-    image: "/referenssit/kerava-paritalo/05.jpg",
-    alt: "Puupaneloitu sauna epäsuoralla valaistuksella",
+    image: "/referenssit/jarvenpaa-omakotitalot/03.jpg",
+    alt: "Puupaneloitu sauna, jossa valaistut lauteet ja lasiseinä",
     body: "Vaikka et ehtisi mukaan suunnitteluun, koti on mietitty valmiiksi: tilat, keittiöt ja kylpyhuoneet ovat toimivia, ja pinnoissa on ajattomia, maanläheisiä sävyjä. Kauniita, laadukkaita ja nykyaikaisia koteja mahdollisimman monen makuun.",
   },
 
   values: {
     title: "Pidämme kiinni siitä, mitä lupaamme",
-    image: "/koti/takka.jpg",
-    alt: "Seinään upotettu varaava takka ja halkoteline",
+    image: "/koti/pesuallas.jpg",
+    alt: "Kivinen pesuallas ja kuparinväriset hanat valaistun peilin edessä",
     items: [
       {
         title: "Vastuullisuus",
@@ -147,13 +147,13 @@ export const site = {
         facts: "122,5 m² / asunto · 5h + kt",
         details:
           "Kahden omakotitalon kokonaisuus Järvenpäähän. Kohteessa on laadukkaat materiaalit sekä huolella suunnitellut tilat ja yksityiskohdat. Korkea huonekorkeus ja suuret ikkunat tuovat koteihin valoa, avaruutta ja tilan tuntua.",
-        image: "/referenssit/jarvenpaa-omakotitalot/06.jpg",
+        image: "/referenssit/jarvenpaa-omakotitalot/01.jpg",
         gallery: [
-          { src: "/referenssit/jarvenpaa-omakotitalot/02.jpg", alt: "Vaalea talo ja terassi ylhäältä kuvattuna" },
-          { src: "/referenssit/jarvenpaa-omakotitalot/03.jpg", alt: "Tummaksi verhottu talo pihan puolelta" },
-          { src: "/referenssit/jarvenpaa-omakotitalot/04.jpg", alt: "Autotalli ja katos" },
-          { src: "/referenssit/jarvenpaa-omakotitalot/05.jpg", alt: "Talo ja piha tien suunnasta" },
-          { src: "/referenssit/jarvenpaa-omakotitalot/01.jpg", alt: "Vaalea talo, terassi ja lasiovet" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/02.jpg", alt: "Keittiö ja saareke" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/03.jpg", alt: "Sauna" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/04.jpg", alt: "Kylpyhuone ja suihkut" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/05.jpg", alt: "Kodinhoitohuone" },
+          { src: "/referenssit/jarvenpaa-omakotitalot/06.jpg", alt: "Wc ja kaakeloitu seinä" },
         ],
       },
       {
@@ -162,30 +162,11 @@ export const site = {
         place: "Kerava",
         facts: "103,5 m² · 4h + kt",
         details:
-          "Paritalokohde Keravalle, toteutettu laadukkain materiaalein. Kodin erityispiirteitä ovat osittain seinään upotettu varaava takka, lakattu betonilattia sekä tilava ja näyttävä kylpyhuone- ja saunaosasto.",
-        image: "/referenssit/kerava-paritalo/02.jpg",
+          "Paritalokohde Keravalle, toteutettu laadukkain materiaalein. Kodin erityispiirteitä ovat lakattu betonilattia sekä valoisa ja avara keittiö- ja olohuonekokonaisuus.",
+        image: "/referenssit/kerava-paritalo/keittio-saareke.jpg",
         gallery: [
-          { src: "/referenssit/kerava-paritalo/01.jpg", alt: "Talo ja pergolalla katettu terassi" },
-          { src: "/referenssit/kerava-paritalo/03.jpg", alt: "Makuuhuone" },
-          { src: "/referenssit/kerava-paritalo/04.jpg", alt: "Katettu terassi" },
-          { src: "/referenssit/kerava-paritalo/05.jpg", alt: "Sauna" },
-          { src: "/referenssit/kerava-paritalo/06.jpg", alt: "Kylpyhuone ja saunan lasiseinä" },
-        ],
-      },
-      {
-        id: "jarvenpaa-paritalot",
-        title: "Kaksi paritaloa",
-        place: "Järvenpää",
-        facts: "77 m² / asunto",
-        details:
-          "Kahden paritalon hanke Järvenpäähän. Kompaktissakin kodissa kolmen metrin huonekorkeus tuo mukavasti tilan tuntua, ja jokaisella asunnolla on oma yksityinen piha-alue.",
-        image: "/referenssit/jarvenpaa-paritalot/01.jpg",
-        gallery: [
-          { src: "/referenssit/jarvenpaa-paritalot/04.jpg", alt: "Olohuone ja keittiö" },
-          { src: "/referenssit/jarvenpaa-paritalot/03.jpg", alt: "Keittiö ja ruokapöytä" },
-          { src: "/referenssit/jarvenpaa-paritalot/02.jpg", alt: "Terassi ja nurmipiha" },
-          { src: "/referenssit/jarvenpaa-paritalot/05.jpg", alt: "Sisäänkäynnit ja autokatos" },
-          { src: "/referenssit/jarvenpaa-paritalot/06.jpg", alt: "Makuuhuone" },
+          { src: "/referenssit/kerava-paritalo/olohuone.jpg", alt: "Olohuone ja terassin ovi" },
+          { src: "/referenssit/kerava-paritalo/keittio-puu.jpg", alt: "Puupintainen keittiö ja valaistut avohyllyt" },
         ],
       },
     ],
